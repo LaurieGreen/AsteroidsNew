@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
+  <Asset Type="Graphics:NodeContent">
+    <Name>Cube1</Name>
+    <Identity>
+      <SourceFilename>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\AsteroidsContent\particles\rectangle.x</SourceFilename>
+      <SourceTool>XImporter</SourceTool>
+    </Identity>
+    <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+    <Children>
+      <Child Type="Graphics:MeshContent">
+        <Name></Name>
+        <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+        <Positions>1.53465247 -0.124821827 -0.562357843 -0.410955548 -0.124821827 -0.562357843 1.53465247 0.9111782 -0.562357843 -0.410955548 0.9111782 -0.562357843</Positions>
+        <Geometry>
+          <Batch>
+            <Material>#Resource1</Material>
+            <Indices>0 1 2 0 2 3 0 3 4 0 4 5 0 5 6 0 6 1 1 6 7 1 7 2 3 2 7 3 7 4 5 4 7 5 7 6</Indices>
+            <Vertices>
+              <PositionIndices>0 1 1 0 2 2 3 3</PositionIndices>
+              <Channels>
+                <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-7.988825E-16 1.28597262E-15 -1 -7.988825E-16 1.28597262E-15 -1 7.988825E-16 -1.28597262E-15 1 7.988825E-16 -1.28597262E-15 1 7.988825E-16 -1.28597262E-15 1 -7.988825E-16 1.28597262E-15 -1 -7.988825E-16 1.28597262E-15 -1 7.988825E-16 -1.28597262E-15 1</VertexChannel>
+              </Channels>
+            </Vertices>
+          </Batch>
+        </Geometry>
+      </Child>
+    </Children>
+  </Asset>
+  <Resources>
+    <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
+      <Identity>
+        <SourceFilename>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\AsteroidsContent\particles\rectangle.x</SourceFilename>
+        <SourceTool>XImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.7898538 0.813333333 0.6940445</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+      </OpaqueData>
+    </Resource>
+  </Resources>
+</XnaContent>

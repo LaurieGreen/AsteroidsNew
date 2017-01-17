@@ -1,0 +1,77 @@
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roid.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\shiptexture_0.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Asteroids.exe
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Asteroids.pdb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.exe
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.pdb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\background.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\circle.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\diamond.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\star.xnb
+C:\Users\Laurie\Documents\Visual Studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\rectangle.xnb
+C:\Users\Laurie\Documents\Visual Studio 2010\Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.csprojResolveAssemblyReference.cache
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj_0.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\engine_2.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion2.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion3.xnb
+C:\Users\Laurie\documents\visual studio 2010\Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\tx0_fire1.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\large.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\medium.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\small.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\background.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\diamond.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\star.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\pause_menu.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\rectangle.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\circle.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\engine_2.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion2.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion3.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\tx0_fire1.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\small_font.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\large_font.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\medium_font.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\shiptexture_0.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj_0.xnb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Asteroids.exe
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Asteroids.pdb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.exe
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.pdb
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.csprojResolveAssemblyReference.cache
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship2.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.exe
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.pdb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\large.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\medium.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\small.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship2.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\background.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\diamond.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\star.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\pause_menu.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\rectangle.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\circle.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\engine_2.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion2.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion3.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\tx0_fire1.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\small_font.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\large_font.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\medium_font.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\shiptexture_0.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj_0.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Asteroids.exe
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Asteroids.pdb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.csprojResolveAssemblyReference.cache
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt

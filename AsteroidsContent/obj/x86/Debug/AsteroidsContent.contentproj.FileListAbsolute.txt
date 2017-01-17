@@ -1,0 +1,3 @@
+C:\Users\Laurie\Documents\Visual Studio 2010\Projects\Asteroids\Asteroids\AsteroidsContent\obj\x86\Debug\AsteroidsContent.contentprojResolveAssemblyReference.cache
+I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\AsteroidsContent\obj\x86\Debug\AsteroidsContent.contentprojResolveAssemblyReference.cache
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\AsteroidsContent\obj\x86\Debug\AsteroidsContent.contentprojResolveAssemblyReference.cache
