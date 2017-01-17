@@ -8,10 +8,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\large.xnb</Output>
-      <Time>2014-10-29T19:21:17.8588091+00:00</Time>
+      <Time>2017-01-17T18:47:48.7637531+00:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\large_roid_0.xml</Key>
-        <Value>2016-04-23T13:11:49.8413684+01:00</Value>
+        <Value>2017-01-17T18:48:55.9210488+00:00</Value>
       </Dependency>
       <Request>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Request>
     </Item>
@@ -22,10 +22,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship.xnb</Output>
-      <Time>2014-10-29T19:22:34.9312174+00:00</Time>
+      <Time>2017-01-17T18:47:48.7747536+00:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\ship_0.xml</Key>
-        <Value>2016-04-23T13:11:50.2303348+01:00</Value>
+        <Value>2017-01-17T18:48:56.4330762+00:00</Value>
       </Dependency>
       <Request>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\shiptexture_0.xnb</Request>
     </Item>
@@ -39,10 +39,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\medium.xnb</Output>
-      <Time>2015-12-01T00:42:23.994614+00:00</Time>
+      <Time>2017-01-17T18:47:48.7657541+00:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\medium_roid_0.xml</Key>
-        <Value>2016-04-23T13:11:50.4863513+01:00</Value>
+        <Value>2017-01-17T18:48:56.6990986+00:00</Value>
       </Dependency>
       <Request>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Request>
     </Item>
@@ -56,12 +56,25 @@
       </Parameters>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\small.xnb</Output>
-      <Time>2015-12-01T00:43:52.513677+00:00</Time>
+      <Time>2017-01-17T18:47:48.8017565+00:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\small_roid_0.xml</Key>
-        <Value>2016-04-23T13:11:50.590357+01:00</Value>
+        <Value>2017-01-17T18:48:56.8031011+00:00</Value>
       </Dependency>
       <Request>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>models\ship2.fbx</Source>
+      <Name>models\ship2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship2.xnb</Output>
+      <Time>2017-01-17T18:47:48.7757537+00:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\ship2_0.xml</Key>
+        <Value>2017-01-17T18:48:56.8600973+00:00</Value>
+      </Dependency>
     </Item>
     <Item>
       <Source>background.jpg</Source>
@@ -70,7 +83,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2014-10-29T22:17:18.0588187+00:00</Time>
+      <Time>2017-01-17T18:47:48.7557529+00:00</Time>
     </Item>
     <Item>
       <Source>particles\diamond.png</Source>
@@ -79,7 +92,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\diamond.xnb</Output>
-      <Time>2014-10-28T00:49:20.9653183+00:00</Time>
+      <Time>2017-01-17T18:47:48.8477572+00:00</Time>
     </Item>
     <Item>
       <Source>particles\star.png</Source>
@@ -88,7 +101,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\star.xnb</Output>
-      <Time>2014-10-28T00:49:20.9683185+00:00</Time>
+      <Time>2017-01-17T18:47:48.8517593+00:00</Time>
     </Item>
     <Item>
       <Source>pause_menu.png</Source>
@@ -97,7 +110,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\pause_menu.xnb</Output>
-      <Time>2016-04-19T23:14:46.6943917+01:00</Time>
+      <Time>2017-01-17T18:47:48.8517593+00:00</Time>
     </Item>
     <Item>
       <Source>particles\rectangle.x</Source>
@@ -106,10 +119,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\rectangle.xnb</Output>
-      <Time>2014-10-30T14:56:57.231428+00:00</Time>
+      <Time>2017-01-17T18:47:48.8487576+00:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\particles\rectangle_0.xml</Key>
-        <Value>2016-04-23T13:11:51.6954191+01:00</Value>
+        <Value>2017-01-17T18:48:58.0573+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -123,10 +136,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\circle.xnb</Output>
-      <Time>2014-10-30T15:30:56.5030677+00:00</Time>
+      <Time>2017-01-17T18:47:48.8467594+00:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\particles\circle_0.xml</Key>
-        <Value>2016-04-23T13:11:51.7564227+01:00</Value>
+        <Value>2017-01-17T18:48:58.1253028+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -136,10 +149,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj.xnb</Output>
-      <Time>2014-10-30T22:18:43.3964678+00:00</Time>
+      <Time>2017-01-17T18:47:48.7677543+00:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\pea_proj_0.xml</Key>
-        <Value>2016-04-23T13:11:51.8174258+01:00</Value>
+        <Value>2017-01-17T18:48:58.2024303+00:00</Value>
       </Dependency>
       <Request>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj_0.xnb</Request>
     </Item>
@@ -150,7 +163,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\engine_2.xnb</Output>
-      <Time>2007-12-09T18:16:56+00:00</Time>
+      <Time>2017-01-17T18:47:48.8627671+00:00</Time>
     </Item>
     <Item>
       <Source>sound\explosion2.wav</Source>
@@ -159,7 +172,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion2.xnb</Output>
-      <Time>2007-12-09T18:16:56+00:00</Time>
+      <Time>2017-01-17T18:47:48.875766+00:00</Time>
     </Item>
     <Item>
       <Source>sound\explosion3.wav</Source>
@@ -168,7 +181,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\explosion3.xnb</Output>
-      <Time>2007-12-09T18:16:56+00:00</Time>
+      <Time>2017-01-17T18:47:48.8837679+00:00</Time>
     </Item>
     <Item>
       <Source>sound\tx0_fire1.wav</Source>
@@ -177,7 +190,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\sound\tx0_fire1.xnb</Output>
-      <Time>2007-12-09T18:17:00+00:00</Time>
+      <Time>2017-01-17T18:47:48.8917667+00:00</Time>
     </Item>
     <Item>
       <Source>fonts\small_font.spritefont</Source>
@@ -186,7 +199,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\small_font.xnb</Output>
-      <Time>2016-04-19T22:57:37.1934976+01:00</Time>
+      <Time>2017-01-17T18:47:48.7607548+00:00</Time>
     </Item>
     <Item>
       <Source>fonts\large_font.spritefont</Source>
@@ -195,7 +208,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\large_font.xnb</Output>
-      <Time>2016-04-19T23:07:03.6184586+01:00</Time>
+      <Time>2017-01-17T18:47:48.7577531+00:00</Time>
     </Item>
     <Item>
       <Source>fonts\medium_font.spritefont</Source>
@@ -204,14 +217,14 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\fonts\medium_font.xnb</Output>
-      <Time>2016-04-19T23:01:39.2246515+01:00</Time>
+      <Time>2017-01-17T18:47:48.7597547+00:00</Time>
     </Item>
     <Item>
       <Source>models\large_roid.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\large_roid_0.xml</Output>
-      <Time>2014-10-29T19:21:17.8588091+00:00</Time>
+      <Time>2017-01-17T18:47:48.7637531+00:00</Time>
     </Item>
     <Item>
       <Source>models\roidtexture.png</Source>
@@ -227,14 +240,14 @@
       </Parameters>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Output>
-      <Time>2008-12-14T09:31:04+00:00</Time>
+      <Time>2017-01-17T18:47:48.7727551+00:00</Time>
     </Item>
     <Item>
       <Source>models\ship.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\ship_0.xml</Output>
-      <Time>2014-10-29T19:22:34.9312174+00:00</Time>
+      <Time>2017-01-17T18:47:48.7747536+00:00</Time>
     </Item>
     <Item>
       <Source>models\shiptexture.png</Source>
@@ -250,42 +263,49 @@
       </Parameters>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\shiptexture_0.xnb</Output>
-      <Time>2008-12-14T09:31:04+00:00</Time>
+      <Time>2017-01-17T18:47:48.7997566+00:00</Time>
     </Item>
     <Item>
       <Source>models\medium_roid.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\medium_roid_0.xml</Output>
-      <Time>2015-12-01T00:42:23.994614+00:00</Time>
+      <Time>2017-01-17T18:47:48.7657541+00:00</Time>
     </Item>
     <Item>
       <Source>models\small_roid.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\small_roid_0.xml</Output>
-      <Time>2015-12-01T00:43:52.513677+00:00</Time>
+      <Time>2017-01-17T18:47:48.8017565+00:00</Time>
+    </Item>
+    <Item>
+      <Source>models\ship2.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\ship2_0.xml</Output>
+      <Time>2017-01-17T18:47:48.7757537+00:00</Time>
     </Item>
     <Item>
       <Source>particles\rectangle.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\particles\rectangle_0.xml</Output>
-      <Time>2014-10-30T14:56:57.231428+00:00</Time>
+      <Time>2017-01-17T18:47:48.8487576+00:00</Time>
     </Item>
     <Item>
       <Source>particles\circle.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\particles\circle_0.xml</Output>
-      <Time>2014-10-30T15:30:56.5030677+00:00</Time>
+      <Time>2017-01-17T18:47:48.8467594+00:00</Time>
     </Item>
     <Item>
       <Source>models\pea_proj.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\pea_proj_0.xml</Output>
-      <Time>2014-10-30T22:18:43.3964678+00:00</Time>
+      <Time>2017-01-17T18:47:48.7677543+00:00</Time>
     </Item>
     <Item>
       <Source>models\pea_proj.tga</Source>
@@ -301,27 +321,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj_0.xnb</Output>
-      <Time>2007-12-09T18:16:58+00:00</Time>
-    </Item>
-    <Item>
-      <Source>models\ship2.fbx</Source>
-      <Name>models\ship2</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>I:\Storage\Documents\Dev_Projects\XNA Projects\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship2.xnb</Output>
-      <Time>2016-05-16T16:53:56.9149283+01:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\models\ship2_0.xml</Key>
-        <Value>2016-05-16T16:55:24.8753683+01:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
-      <Source>models\ship2.fbx</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>obj\x86\Debug\models\ship2_0.xml</Output>
-      <Time>2016-05-16T16:53:56.9149283+01:00</Time>
+      <Time>2017-01-17T18:47:48.7667545+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -361,7 +361,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2016-03-16T22:13:11.2118494+00:00</Value>
+        <Value>2016-09-26T20:06:26.1155418+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

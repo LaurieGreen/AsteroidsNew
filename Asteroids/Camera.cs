@@ -10,6 +10,7 @@ namespace Asteroids
 {
     public class Camera
     {
+        //camera class
         protected Vector3 topDown = new Vector3(0.0f, 0.0f, 14.0f);
         protected Vector3 chase = new Vector3(0.0f, 1500.0f, 200.0f);
 
