@@ -114,7 +114,7 @@ namespace Asteroids
             else if (gameState == GameState.StartMenu)
             {
                 mainMenu.Update(state, lastState);
-                if (mainMenu.finalSelection == 2)
+                if (mainMenu.finalSelection == 0)
                 {
                     LoadNewLevel();
                     System.Console.WriteLine("new level");
@@ -126,10 +126,10 @@ namespace Asteroids
                     gameState = GameState.HighScore;
                     mainMenu.finalSelection = -10;
                 }
-                else if (mainMenu.finalSelection == 0)
+                else if (mainMenu.finalSelection == 2)
                 {
                     mainMenu.finalSelection = -10;
-                    //game.Quit();                    
+                    game.Quit();                    
                 }
             }
             else if (gameState == GameState.Paused)
@@ -140,18 +140,23 @@ namespace Asteroids
                 //    gameState = GameState.Playing;
                 //    pausedTime = pausedTime + ((float)gameTime.TotalGameTime.TotalSeconds-playingTime);
                 //}
-                if (pauseMenu.finalSelection == 1)
+                if (pauseMenu.finalSelection == 0)
                 {
                     gameState = GameState.Playing;
                     System.Console.WriteLine("playing");
                     pauseMenu.finalSelection = -10;
                 }
-                if (pauseMenu.finalSelection == 0)
+                if (pauseMenu.finalSelection == 1)
                 {
                     gameState = GameState.StartMenu;
                     System.Console.WriteLine("menu");
                     pauseMenu.finalSelection = -10;
                 }
+            }
+            else if (gameState == GameState.HighScore)
+            {
+                System.Console.WriteLine("this is the highscore menu");
+                gameState = GameState.StartMenu;
             }
             lastState = state;
         }

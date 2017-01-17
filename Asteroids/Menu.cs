@@ -67,7 +67,6 @@ namespace Asteroids
             {
                 finalSelection = currentSelection;
             }
-            
         }
 
         public void Draw(SpriteBatch spriteBatch, float width, float height, Color color, GameTime gameTime)
