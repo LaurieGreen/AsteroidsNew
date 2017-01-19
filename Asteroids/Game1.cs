@@ -21,6 +21,7 @@ namespace Asteroids
         SpriteBatch spriteBatch;
         StateManager stateManager;
         SpriteFont _spr_font;
+        Texture2D horrible_tex;
         int _total_frames = 0;
         float _elapsed_time = 0.0f;
         int _fps = 0;
@@ -53,6 +54,7 @@ namespace Asteroids
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _spr_font = Content.Load<SpriteFont>("fonts/small_font");
+            horrible_tex = Content.Load<Texture2D>("horrible_texture");
 
             stateManager = new StateManager(
                 graphics, 
@@ -63,8 +65,7 @@ namespace Asteroids
                     Content.Load<Model>("models/medium"),
                     Content.Load<Model>("models/large")
                 },
-                Content.Load<Model>("particles/circle"),
-                Content.Load<Model>("particles/tiny_circle"), 
+                Content.Load<Model>("particles/circle"), 
                 Content.Load<SoundEffect>("sound/engine_2"),
                 Content.Load<SoundEffect>("sound/tx0_fire1"),
                 Content.Load<SoundEffect>("sound/explosion3"),
@@ -72,8 +73,7 @@ namespace Asteroids
                 Content.Load<SpriteFont>("fonts/small_font"),
                 Content.Load<SpriteFont>("fonts/medium_font"),
                 Content.Load<SpriteFont>("fonts/large_font"),
-                new List<Model> {Content.Load<Model>("particles/circle")}, 
-                Content.Load<Texture2D>("background"),
+                new List<Model> {Content.Load<Model>("particles/circle")},
                 Content.Load<Texture2D>("pause_menu"),
                 1
                 );
@@ -112,7 +112,7 @@ namespace Asteroids
                 _total_frames = 0;
                 _elapsed_time = 0;
             }
-            stateManager.Update(gameTime, this);
+            stateManager.Update(gameTime, this, graphics.GraphicsDevice);
             //state = Keyboard.GetState();
             //if (gameIsRunning)
             //{
@@ -170,8 +170,8 @@ namespace Asteroids
 
             stateManager.Draw(gameTime, spriteBatch, GraphicsDevice);
             spriteBatch.Begin();
-            spriteBatch.DrawString(_spr_font, string.Format("FPS={0}", _fps),
-                new Vector2(10.0f, 50.0f), Color.White);
+            //spriteBatch.DrawString(_spr_font, string.Format("FPS={0}", _fps,new Vector2(10.0f, 50.0f), Color.White);
+            //spriteBatch.Draw(horrible_tex, new Vector2(300, 200), Color.Wheat);
             spriteBatch.End();
             base.Draw(gameTime);
         }

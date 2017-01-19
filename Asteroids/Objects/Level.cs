@@ -141,17 +141,17 @@ namespace Asteroids
             }
         }
 
-        public void Draw(Camera camera, float timeDelta, Texture2D background, SpriteFont font, SpriteBatch spriteBatch, int level, float width, float height)
+        public void Draw(Camera camera, float timeDelta, SpriteFont font, SpriteBatch spriteBatch, int level, float width, float height)
         {
             spriteBatch.Begin();
-            DrawUI(camera, level, player.score, player.lives, asteroidEngine.asteroidList.Count(), player.multiplier, background, font, spriteBatch, width, height);
+            DrawUI(camera, level, player.score, player.lives, asteroidEngine.asteroidList.Count(), player.multiplier, font, spriteBatch, width, height);
             spriteBatch.End();
             player.Draw(camera, timeDelta);
             asteroidEngine.Draw(camera);
             bulletEngine.Draw(camera);
         }
 
-        public void DrawUI(Camera camera, int level, int score, int lives, int asteroids, float multiplier, Texture2D background, SpriteFont font, SpriteBatch spriteBatch, float width, float height)
+        public void DrawUI(Camera camera, int level, int score, int lives, int asteroids, float multiplier, SpriteFont font, SpriteBatch spriteBatch, float width, float height)
         {
            // spriteBatch.DrawString(large_font, "ASTEROIDS", new Vector2(width / 2 - (large_font.MeasureString("ASTEROIDS").Length() / 2), height / 16), Color.White);
 

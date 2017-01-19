@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,38 +9,66 @@ namespace Asteroids
 {
     class DustEngine
     {
-        public List<SpaceDust> dustList;
-        private Model texture;
-        int numSpecs = 1000;
+        public List<Dust> dustList;
+        private Texture2D texture;
+        int numSpecs = 500;
         Random random = new Random();
-        float maxX, maxY;
+        float x, y, x2, y2;
+        float speedMultiplier = 0.3f;
 
-        public DustEngine(Model texture, GraphicsDevice graphicsDevice)
+
+        public DustEngine(GraphicsDevice graphicsDevice)
         {
-            this.texture = texture;
-            this.dustList = new List<SpaceDust>();
-            maxX = graphicsDevice.Viewport.Width;
-            maxY = graphicsDevice.Viewport.Height;
+            //this.texture = texture;
+            this.dustList = new List<Dust>();
+            texture = new Texture2D(graphicsDevice, 1, 1);
+            System.Console.WriteLine("width: "+graphicsDevice.Viewport.Width);
+            System.Console.WriteLine("height: "+graphicsDevice.Viewport.Height);
+            texture.SetData<Color>(new Color[] { Color.White });// fill the texture with white
             for (int i = 0; i < numSpecs; i++)
             {
                 // Where will the dust spawn?
-                SpaceDust spec = new SpaceDust(texture, maxX, maxY, random);
+                if (random.Next(3) >= 0)// 2/3 chance of it being zero or higher
+                {
+                    //if its positive then we have a range of 2 x the width
+                    x = (float)random.NextDouble() * (2*graphicsDevice.Viewport.Width);
+                }
+                else
+                {
+                    //if its negative then we only want a range of -width 
+                    x = (float)-random.NextDouble() * graphicsDevice.Viewport.Width;
+                }
+                
+                if (random.Next(3) >= 0)
+                {
+                    y = (float)random.NextDouble() * (2*graphicsDevice.Viewport.Height);
+                }
+                else
+                {
+                    y = (float)-random.NextDouble() * graphicsDevice.Viewport.Height;
+                }
+                
+                double angle = random.NextDouble() * 2 * Math.PI;
+
+                x2 = -((float)Math.Sin(angle)*speedMultiplier);
+                y2 = ((float)Math.Cos(angle)*speedMultiplier); 
+                Dust spec = new Dust(texture, x, y, x2, y2, random);
                 dustList.Add(spec);
             }
         }
-        public void Update()
+        public void Update(GraphicsDevice graphicsDevice)
         {
             for (int i = 0; i < dustList.Count(); i++)
             {
-                dustList[i].Update();
+                dustList[i].Update(graphicsDevice);
             }
         }
 
-        public void Draw(Camera camera)
+        public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < dustList.Count(); i++)
             {
-                dustList[i].Draw(camera);
+                dustList[i].Draw(spriteBatch);
             }
         }
     }

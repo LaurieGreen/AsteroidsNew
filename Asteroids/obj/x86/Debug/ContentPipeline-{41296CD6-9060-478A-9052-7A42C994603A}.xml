@@ -347,6 +347,15 @@
       <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\particles\tiny_circle_0.xml</Output>
       <Time>2017-01-19T00:07:14.4948381+00:00</Time>
     </Item>
+    <Item>
+      <Source>horrible_texture.png</Source>
+      <Name>horrible_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\horrible_texture.xnb</Output>
+      <Time>2017-01-19T22:57:20.5987408+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{41296CD6-9060-478A-9052-7A42C994603A}</ContentProjectGUID>

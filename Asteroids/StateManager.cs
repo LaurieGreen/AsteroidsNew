@@ -25,13 +25,13 @@ namespace Asteroids
         Level level;
         int currentLevel;
         Camera camera;
-        Model playerModel, bulletModel, dustModel;
+        Model playerModel, bulletModel;
+        Texture2D pauseMenuImage;
         Model[] asteroidModel;
         List<Model> textures;
         KeyboardState state, lastState;
         SoundEffect engineSound, laserSound, explosionSound;
         SpriteFont small_font, medium_font, large_font;
-        Texture2D background, pauseMenuImage;
         SoundEffectInstance engineInstance;
         List<string> highscoresList;
         float drawTime, oldDrawTime;
@@ -45,7 +45,6 @@ namespace Asteroids
             Model playerModel, 
             Model[] asteroidModel, 
             Model bulletModel,
-            Model dustModel,
             SoundEffect engineSound, 
             SoundEffect laserSound, 
             SoundEffect explosionSound, 
@@ -54,7 +53,6 @@ namespace Asteroids
             SpriteFont medium_font,
             SpriteFont large_font,
             List<Model> textures,
-            Texture2D background,
             Texture2D pauseMenuImage,
             int currentLevel)
         {
@@ -63,7 +61,6 @@ namespace Asteroids
             this.playerModel = playerModel;
             this.asteroidModel = asteroidModel;
             this.bulletModel = bulletModel;
-            this.dustModel = dustModel;
             this.engineSound = engineSound;
             this.laserSound = laserSound;
             this.explosionSound = explosionSound;
@@ -72,15 +69,14 @@ namespace Asteroids
             this.medium_font = medium_font;
             this.large_font = large_font;
             this.textures = textures;
-            this.background = background;
-            this.pauseMenuImage = pauseMenuImage;
             this.currentLevel = currentLevel;
+            this.pauseMenuImage = pauseMenuImage;
             pauseMenu = new Menu(small_font, medium_font, large_font, "PAUSE MENU", new List<String> { "RESUME", "MAIN MENU" }, pauseMenuImage);
             mainMenu = new Menu(small_font, medium_font, large_font, "MAIN MENU", new List<String> { "PLAY", "HIGHSCORES", "QUIT" }, pauseMenuImage);
             highScoreMenu = new Menu(small_font, medium_font, large_font, "HIGH SCORES", new List<String> { "BACK" }, pauseMenuImage);
             lastState = Keyboard.GetState();
             camera = new Camera(Vector3.Zero, graphics.GraphicsDevice.Viewport.AspectRatio, MathHelper.ToRadians(90.0f));
-            dustEngine = new DustEngine(dustModel, graphics.GraphicsDevice);
+            dustEngine = new DustEngine(graphics.GraphicsDevice);
             GetHighScores();
         }
 
@@ -89,7 +85,7 @@ namespace Asteroids
             level = new Level(playerModel, camera, asteroidModel[2], bulletModel, textures, currentLevel);
         }
 
-        public void Update(GameTime gameTime, Game1 game)
+        public void Update(GameTime gameTime, Game1 game, GraphicsDevice graphicsDevice)
         {
             state = Keyboard.GetState();
             if (gameState == GameState.Playing)
@@ -181,7 +177,7 @@ namespace Asteroids
                     gameState = GameState.Playing;
                 }
             }
-            dustEngine.Update();
+            dustEngine.Update(graphicsDevice);
             lastState = state;
         }
 
@@ -222,12 +218,12 @@ namespace Asteroids
                 {
                     drawTime = oldDrawTime;
                 }
-                level.Draw(camera, drawTime, background, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
+                level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
                 oldDrawTime = drawTime;
             }
             if (gameState == GameState.Paused)
             {
-                level.Draw(camera, drawTime, background, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
+                level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
                 pauseMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.70f, gameTime);
             }
             if (gameState == GameState.StartMenu)
@@ -250,7 +246,7 @@ namespace Asteroids
                 spriteBatch.DrawString(large_font, "LOADING", new Vector2(width / 2, (height / 2) - ((large_font.MeasureString("LOADING").Y/2))), choiceColor, 0, new Vector2(large_font.MeasureString("LOADING").Length() / 2, large_font.MeasureString("LOADING").Y /2), scale, SpriteEffects.None, 0);
                 spriteBatch.End();
             }
-            dustEngine.Draw(camera);
+            dustEngine.Draw(spriteBatch);
         }        
     }
 }

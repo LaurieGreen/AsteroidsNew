@@ -118,7 +118,7 @@
     <Compile Include="Objects\Particle.cs" />
     <Compile Include="Engines\ParticleEngine.cs" />
     <Compile Include="Objects\Player.cs" />
-    <Compile Include="Objects\SpaceDust.cs" />
+    <Compile Include="Objects\Dust.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
