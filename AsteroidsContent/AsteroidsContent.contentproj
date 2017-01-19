@@ -166,6 +166,15 @@
       <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="particles\tiny_circle.x">
+      <Name>tiny_circle</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_ColorKeyColor>0, 0, 0, 0</ProcessorParameters_ColorKeyColor>
+      <ProcessorParameters_Scale>0.02</ProcessorParameters_Scale>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

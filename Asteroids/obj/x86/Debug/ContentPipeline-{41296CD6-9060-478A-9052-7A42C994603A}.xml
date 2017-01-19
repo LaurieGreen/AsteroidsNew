@@ -11,7 +11,7 @@
       <Time>2014-10-29T19:21:17.8588091+00:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\large_roid_0.xml</Key>
-        <Value>2017-01-16T22:30:49.7938293+00:00</Value>
+        <Value>2017-01-18T23:45:08.6538694+00:00</Value>
       </Dependency>
       <Request>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Request>
     </Item>
@@ -25,7 +25,7 @@
       <Time>2014-10-29T19:22:34.9312174+00:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\ship_0.xml</Key>
-        <Value>2017-01-16T22:30:50.3473102+00:00</Value>
+        <Value>2017-01-18T23:45:09.1944535+00:00</Value>
       </Dependency>
       <Request>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\shiptexture_0.xnb</Request>
     </Item>
@@ -42,7 +42,7 @@
       <Time>2015-12-01T00:42:23.994614+00:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\medium_roid_0.xml</Key>
-        <Value>2017-01-16T22:30:50.5154423+00:00</Value>
+        <Value>2017-01-18T23:45:09.3869129+00:00</Value>
       </Dependency>
       <Request>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Request>
     </Item>
@@ -59,7 +59,7 @@
       <Time>2015-12-01T00:43:52.513677+00:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\small_roid_0.xml</Key>
-        <Value>2017-01-16T22:30:50.629684+00:00</Value>
+        <Value>2017-01-18T23:45:09.4934719+00:00</Value>
       </Dependency>
       <Request>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Request>
     </Item>
@@ -73,7 +73,7 @@
       <Time>2016-05-16T16:53:56.9149283+01:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\ship2_0.xml</Key>
-        <Value>2017-01-16T22:30:50.6777245+00:00</Value>
+        <Value>2017-01-18T23:45:09.5535619+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -122,7 +122,7 @@
       <Time>2014-10-30T14:56:57.231428+00:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\particles\rectangle_0.xml</Key>
-        <Value>2017-01-16T22:30:51.1796534+00:00</Value>
+        <Value>2017-01-18T23:45:10.1803607+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -139,7 +139,7 @@
       <Time>2014-10-30T15:30:56.5030677+00:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\particles\circle_0.xml</Key>
-        <Value>2017-01-16T22:30:51.185669+00:00</Value>
+        <Value>2017-01-18T23:45:10.1944015+00:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -152,7 +152,7 @@
       <Time>2014-10-30T22:18:43.3964678+00:00</Time>
       <Dependency>
         <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\pea_proj_0.xml</Key>
-        <Value>2017-01-16T22:30:51.1946942+00:00</Value>
+        <Value>2017-01-18T23:45:10.2054312+00:00</Value>
       </Dependency>
       <Request>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj_0.xnb</Request>
     </Item>
@@ -322,6 +322,30 @@
       <Options>None</Options>
       <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj_0.xnb</Output>
       <Time>2007-12-09T18:16:58+00:00</Time>
+    </Item>
+    <Item>
+      <Source>particles\tiny_circle.x</Source>
+      <Name>particles\tiny_circle</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">0, 0, 0, 0</Data>
+        <Data Key="Scale">0.02</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\tiny_circle.xnb</Output>
+      <Time>2017-01-19T00:07:14.4948381+00:00</Time>
+      <Dependency>
+        <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\particles\tiny_circle_0.xml</Key>
+        <Value>2017-01-19T00:10:16.8196545+00:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>particles\tiny_circle.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\particles\tiny_circle_0.xml</Output>
+      <Time>2017-01-19T00:07:14.4948381+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

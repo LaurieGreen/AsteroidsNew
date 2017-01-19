@@ -63,7 +63,8 @@ namespace Asteroids
                     Content.Load<Model>("models/medium"),
                     Content.Load<Model>("models/large")
                 },
-                Content.Load<Model>("particles/circle"), 
+                Content.Load<Model>("particles/circle"),
+                Content.Load<Model>("particles/tiny_circle"), 
                 Content.Load<SoundEffect>("sound/engine_2"),
                 Content.Load<SoundEffect>("sound/tx0_fire1"),
                 Content.Load<SoundEffect>("sound/explosion3"),
@@ -172,58 +173,6 @@ namespace Asteroids
             spriteBatch.DrawString(_spr_font, string.Format("FPS={0}", _fps),
                 new Vector2(10.0f, 50.0f), Color.White);
             spriteBatch.End();
-            //if (gameIsRunning)
-            //{
-            //    if (level.isActive)
-            //    {
-            //        drawTime = (float)gameTime.TotalGameTime.TotalSeconds-startedAt;
-            //    }
-            //    else
-            //    {
-            //        drawTime = oldDrawTime;
-            //    }
-            //    level.Draw(camera, drawTime, background, small_font, spriteBatch, currentLevel);
-
-            //    if (level.isPaused)
-            //    {
-            //        spriteBatch.Begin();
-            //        spriteBatch.Draw(pauseMenuImage, new Rectangle(0, 0, 800, 480), Color.White * 0.70f);
-            //        spriteBatch.DrawString(large_font, "ASTEROIDS", new Vector2(
-            //            GraphicsDevice.Viewport.Width / 2 - (large_font.MeasureString("ASTEROIDS").Length() / 2),
-            //            GraphicsDevice.Viewport.Height / 16), Color.White);
-
-            //        spriteBatch.DrawString(medium_font, "PAUSE MENU", new Vector2(
-            //            GraphicsDevice.Viewport.Width / 2 - (medium_font.MeasureString("PAUSE MENU").Length() / 2),
-            //            GraphicsDevice.Viewport.Height / 8 + (2 * medium_font.MeasureString("PAUSE MENU").Y)), Color.White);
-
-            //        spriteBatch.DrawString(small_font, "P TO RESUME", new Vector2(
-            //            GraphicsDevice.Viewport.Width / 2 - small_font.MeasureString("P TO RESUME").Length() / 2,
-            //            (GraphicsDevice.Viewport.Height / 8) * 6), Color.White);
-            //        spriteBatch.End();
-            //    }
-            //    oldDrawTime = drawTime;
-            //}
-            //else
-            //{
-            //    spriteBatch.Begin();
-            //    //spriteBatch.Draw(mainMenu, new Rectangle(0, 0, 800, 480), Color.White * 0.70f);
-            //    spriteBatch.DrawString(large_font, "ASTEROIDS", new Vector2(
-            //        GraphicsDevice.Viewport.Width / 2 - (large_font.MeasureString("ASTEROIDS").Length() / 2),
-            //        GraphicsDevice.Viewport.Height / 16), Color.White);
-
-            //    spriteBatch.DrawString(medium_font, "MAIN MENU", new Vector2(
-            //        GraphicsDevice.Viewport.Width / 2 - (medium_font.MeasureString("MAIN MENU").Length() / 2),
-            //        GraphicsDevice.Viewport.Height / 8 + (2 * medium_font.MeasureString("MAIN MENU").Y)), Color.White);
-
-            //    spriteBatch.DrawString(small_font, "ENTER to Play", new Vector2(
-            //        GraphicsDevice.Viewport.Width / 2 - small_font.MeasureString("ENTER to Play").Length() / 2,
-            //        (GraphicsDevice.Viewport.Height / 8) * 5), Color.White);
-
-            //    spriteBatch.DrawString(small_font, "ESC to Leave", new Vector2(
-            //        GraphicsDevice.Viewport.Width / 2 - small_font.MeasureString("ESC to Leave").Length() / 2,
-            //        (GraphicsDevice.Viewport.Height / 8)* 5 + (2 * small_font.MeasureString("ESC to Leave").Y)), Color.White);
-            //    spriteBatch.End();
-            //}
             base.Draw(gameTime);
         }
     }

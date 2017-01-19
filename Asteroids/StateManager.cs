@@ -25,7 +25,7 @@ namespace Asteroids
         Level level;
         int currentLevel;
         Camera camera;
-        Model playerModel, bulletModel;
+        Model playerModel, bulletModel, dustModel;
         Model[] asteroidModel;
         List<Model> textures;
         KeyboardState state, lastState;
@@ -37,12 +37,15 @@ namespace Asteroids
         float drawTime, oldDrawTime;
         GraphicsDeviceManager graphics;
         GameState gameState;
+        private float timeBeginLoad;
+        DustEngine dustEngine;
 
         public StateManager(
             GraphicsDeviceManager graphics, 
             Model playerModel, 
             Model[] asteroidModel, 
-            Model bulletModel, 
+            Model bulletModel,
+            Model dustModel,
             SoundEffect engineSound, 
             SoundEffect laserSound, 
             SoundEffect explosionSound, 
@@ -60,6 +63,7 @@ namespace Asteroids
             this.playerModel = playerModel;
             this.asteroidModel = asteroidModel;
             this.bulletModel = bulletModel;
+            this.dustModel = dustModel;
             this.engineSound = engineSound;
             this.laserSound = laserSound;
             this.explosionSound = explosionSound;
@@ -76,6 +80,7 @@ namespace Asteroids
             highScoreMenu = new Menu(small_font, medium_font, large_font, "HIGH SCORES", new List<String> { "BACK" }, pauseMenuImage);
             lastState = Keyboard.GetState();
             camera = new Camera(Vector3.Zero, graphics.GraphicsDevice.Viewport.AspectRatio, MathHelper.ToRadians(90.0f));
+            dustEngine = new DustEngine(dustModel, graphics.GraphicsDevice);
             GetHighScores();
         }
 
@@ -118,13 +123,16 @@ namespace Asteroids
                 {
                     LoadNewLevel();
                     System.Console.WriteLine("new level");
-                    gameState = GameState.Playing;
+                    gameState = GameState.Loading;
+                    timeBeginLoad = (float)gameTime.TotalGameTime.TotalMilliseconds;
                     mainMenu.finalSelection = -10;
+                    mainMenu.currentSelection = 0;
                 }
                 else if (mainMenu.finalSelection == 1)
                 {                    
                     gameState = GameState.HighScore;
                     mainMenu.finalSelection = -10;
+                    mainMenu.currentSelection = 0;
                 }
                 else if (mainMenu.finalSelection == 2)
                 {
@@ -145,19 +153,35 @@ namespace Asteroids
                     gameState = GameState.Playing;
                     System.Console.WriteLine("playing");
                     pauseMenu.finalSelection = -10;
+                    pauseMenu.currentSelection = 0;
                 }
                 if (pauseMenu.finalSelection == 1)
                 {
                     gameState = GameState.StartMenu;
                     System.Console.WriteLine("menu");
                     pauseMenu.finalSelection = -10;
+                    pauseMenu.currentSelection = 0;
                 }
             }
             else if (gameState == GameState.HighScore)
             {
-                System.Console.WriteLine("this is the highscore menu");
-                gameState = GameState.StartMenu;
+                highScoreMenu.Update(state, lastState);
+                //System.Console.WriteLine("this is the highscore menu");
+                if (highScoreMenu.finalSelection == 0)
+                {
+                    gameState = GameState.StartMenu;
+                    highScoreMenu.finalSelection = -10;
+                    highScoreMenu.currentSelection = 0;
+                }
             }
+            else if (gameState == GameState.Loading)
+            {
+                if ((float)gameTime.TotalGameTime.TotalMilliseconds >= timeBeginLoad + 5000f)
+                {
+                    gameState = GameState.Playing;
+                }
+            }
+            dustEngine.Update();
             lastState = state;
         }
 
@@ -210,6 +234,23 @@ namespace Asteroids
             {
                 mainMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
             }
+            if (gameState == GameState.HighScore)
+            {
+                highScoreMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
+            }
+            if (gameState == GameState.Loading)
+            {
+                spriteBatch.Begin();
+                double time = gameTime.TotalGameTime.TotalSeconds;
+                float pulsate = (float)Math.Sin(time * 6) + 1;
+                Color choiceColor = new Color(0, 204, 0);//green
+                float scale = 1 + pulsate * 0.05f;
+                float width = graphicsDevice.Viewport.Width;
+                float height = graphicsDevice.Viewport.Height;
+                spriteBatch.DrawString(large_font, "LOADING", new Vector2(width / 2, (height / 2) - ((large_font.MeasureString("LOADING").Y/2))), choiceColor, 0, new Vector2(large_font.MeasureString("LOADING").Length() / 2, large_font.MeasureString("LOADING").Y /2), scale, SpriteEffects.None, 0);
+                spriteBatch.End();
+            }
+            dustEngine.Draw(camera);
         }        
     }
 }

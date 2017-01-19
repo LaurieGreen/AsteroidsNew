@@ -107,21 +107,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asteroid.cs" />
-    <Compile Include="AsteroidEngine.cs" />
-    <Compile Include="Bullet.cs" />
-    <Compile Include="Camera.cs" />
-    <Compile Include="BulletEngine.cs" />
-    <Compile Include="Choice.cs" />
-    <Compile Include="Level.cs" />
+    <Compile Include="Engines\DustEngine.cs" />
+    <Compile Include="Objects\Asteroid.cs" />
+    <Compile Include="Engines\AsteroidEngine.cs" />
+    <Compile Include="Objects\Bullet.cs" />
+    <Compile Include="Objects\Camera.cs" />
+    <Compile Include="Engines\BulletEngine.cs" />
+    <Compile Include="Objects\Level.cs" />
     <Compile Include="GameConstants.cs" />
-    <Compile Include="Particle.cs" />
-    <Compile Include="ParticleEngine.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Objects\Particle.cs" />
+    <Compile Include="Engines\ParticleEngine.cs" />
+    <Compile Include="Objects\Player.cs" />
+    <Compile Include="Objects\SpaceDust.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Menu.cs" />
+    <Compile Include="Objects\Menu.cs" />
     <Compile Include="StateManager.cs" />
   </ItemGroup>
   <ItemGroup>
