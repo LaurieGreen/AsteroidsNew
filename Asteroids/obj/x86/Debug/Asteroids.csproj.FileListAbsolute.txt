@@ -77,3 +77,6 @@ C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.ex
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\Asteroids.pdb
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\tiny_circle.xnb
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\horrible_texture.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\space_frigate_6.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\space_frigate_6\space_frigate_6_color_0.xnb
+C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship3.xnb

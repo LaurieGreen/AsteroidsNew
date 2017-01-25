@@ -17,7 +17,6 @@ namespace Asteroids
         public AsteroidEngine asteroidEngine;
         public BulletEngine bulletEngine;
         public bool isActive,isPaused;
-        float time;
 
         public Level(Model playerModel, Camera camera, Model asteroidModel, Model bulletModel, List<Model> textures, int level)
         {

@@ -18,7 +18,7 @@ namespace Asteroids
             Texture = texture;
             Position = new Vector2(x, y);
             Velocity = new Vector2 (x2, y2);
-            System.Console.WriteLine("position: " + Position);
+            //System.Console.WriteLine("position: " + Position);
         }
 
         public void Update(GraphicsDevice graphicsDevice)
@@ -37,12 +37,12 @@ namespace Asteroids
                 Position.Y = 2 * graphicsDevice.Viewport.Height;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, float opacity)
         {
             //Matrix world = Matrix.CreateBillboard(Position, camera.Position, Vector3.Up, camera.Target - camera.Position);
             //camera.DrawSpaceDust(Texture, camera, world);
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y), Color.White);
+            spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y), Color.White *opacity);
             spriteBatch.End();
         }
     }

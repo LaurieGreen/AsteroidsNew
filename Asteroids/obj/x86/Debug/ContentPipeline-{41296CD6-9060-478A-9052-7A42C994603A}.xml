@@ -64,19 +64,6 @@
       <Request>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\roidtexture_0.xnb</Request>
     </Item>
     <Item>
-      <Source>models\ship2.fbx</Source>
-      <Name>models\ship2</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship2.xnb</Output>
-      <Time>2016-05-16T16:53:56.9149283+01:00</Time>
-      <Dependency>
-        <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\ship2_0.xml</Key>
-        <Value>2017-01-18T23:45:09.5535619+00:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
       <Source>background.jpg</Source>
       <Name>background</Name>
       <Importer>TextureImporter</Importer>
@@ -284,7 +271,7 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\ship2_0.xml</Output>
-      <Time>2016-05-16T16:53:56.9149283+01:00</Time>
+      <Time>2017-01-21T12:22:30.8679723+00:00</Time>
     </Item>
     <Item>
       <Source>particles\rectangle.x</Source>
@@ -355,6 +342,90 @@
       <Options>None</Options>
       <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\horrible_texture.xnb</Output>
       <Time>2017-01-19T22:57:20.5987408+00:00</Time>
+    </Item>
+    <Item>
+      <Source>models\space_frigate_6.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\space_frigate_6_0.xml</Output>
+      <Time>2017-01-21T13:02:49.8699947+00:00</Time>
+    </Item>
+    <Item>
+      <Source>space_frigate_6\space_frigate_6_color.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\space_frigate_6\space_frigate_6_color_0.xnb</Output>
+      <Time>2013-12-10T15:29:58.4130859+00:00</Time>
+    </Item>
+    <Item>
+      <Source>models\space_frigate_6.FBX</Source>
+      <Name>models\space_frigate_6</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">0.03</Data>
+        <Data Key="RotationY">270</Data>
+        <Data Key="RotationZ">270</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\space_frigate_6.xnb</Output>
+      <Time>2017-01-21T13:02:49.8699947+00:00</Time>
+      <Dependency>
+        <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\space_frigate_6_0.xml</Key>
+        <Value>2017-01-21T13:12:28.5932402+00:00</Value>
+      </Dependency>
+      <Request>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\space_frigate_6\space_frigate_6_color_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>models\ship3.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\ship3_0.xml</Output>
+      <Time>2017-01-21T18:30:37.4537878+00:00</Time>
+    </Item>
+    <Item>
+      <Source>models\ship3.fbx</Source>
+      <Name>models\ship3</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">0.01</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship3.xnb</Output>
+      <Time>2017-01-21T18:30:37.4537878+00:00</Time>
+      <Dependency>
+        <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\ship3_0.xml</Key>
+        <Value>2017-01-21T18:33:40.3079942+00:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\ship2.fbx</Source>
+      <Name>models\ship2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">0.005</Data>
+        <Data Key="RotationY">90</Data>
+        <Data Key="RotationZ">90</Data>
+        <Data Key="RotationX">90</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\ship2.xnb</Output>
+      <Time>2017-01-21T12:22:30.8679723+00:00</Time>
+      <Dependency>
+        <Key>C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\obj\x86\Debug\models\ship2_0.xml</Key>
+        <Value>2017-01-21T12:23:24.1201722+00:00</Value>
+      </Dependency>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

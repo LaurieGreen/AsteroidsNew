@@ -11,19 +11,18 @@ namespace Asteroids
     {
         public List<Dust> dustList;
         private Texture2D texture;
-        int numSpecs = 500;
-        Random random = new Random();
-        float x, y, x2, y2;
-        float speedMultiplier = 0.3f;
+        //Random random = new Random();
+        float x, y, x2, y2, opacity, speedMultiplier;
 
-
-        public DustEngine(GraphicsDevice graphicsDevice)
+        public DustEngine(GraphicsDevice graphicsDevice, int numSpecs, float opacity, float speedMultiplier, Random random)
         {
             //this.texture = texture;
-            this.dustList = new List<Dust>();
+            dustList = new List<Dust>();
+            this.opacity = opacity;
+            this.speedMultiplier = speedMultiplier;
             texture = new Texture2D(graphicsDevice, 1, 1);
-            System.Console.WriteLine("width: "+graphicsDevice.Viewport.Width);
-            System.Console.WriteLine("height: "+graphicsDevice.Viewport.Height);
+            //System.Console.WriteLine("width: "+graphicsDevice.Viewport.Width);
+            //System.Console.WriteLine("height: "+graphicsDevice.Viewport.Height);
             texture.SetData<Color>(new Color[] { Color.White });// fill the texture with white
             for (int i = 0; i < numSpecs; i++)
             {
@@ -68,7 +67,7 @@ namespace Asteroids
         {
             for (int i = 0; i < dustList.Count(); i++)
             {
-                dustList[i].Draw(spriteBatch);
+                dustList[i].Draw(spriteBatch, opacity);
             }
         }
     }

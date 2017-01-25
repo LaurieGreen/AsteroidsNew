@@ -164,6 +164,10 @@
       <Name>ship2</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_Scale>0.005</ProcessorParameters_Scale>
+      <ProcessorParameters_RotationY>90</ProcessorParameters_RotationY>
+      <ProcessorParameters_RotationZ>90</ProcessorParameters_RotationZ>
+      <ProcessorParameters_RotationX>90</ProcessorParameters_RotationX>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +184,24 @@
       <Name>horrible_texture</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="models\space_frigate_6.FBX">
+      <Name>space_frigate_6</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_Scale>0.03</ProcessorParameters_Scale>
+      <ProcessorParameters_RotationY>270</ProcessorParameters_RotationY>
+      <ProcessorParameters_RotationZ>270</ProcessorParameters_RotationZ>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="models\ship3.fbx">
+      <Name>ship3</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_Scale>0.01</ProcessorParameters_Scale>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

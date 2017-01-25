@@ -21,7 +21,7 @@ namespace Asteroids
         SpriteBatch spriteBatch;
         StateManager stateManager;
         SpriteFont _spr_font;
-        Texture2D horrible_tex;
+        //Texture2D horrible_tex;
         int _total_frames = 0;
         float _elapsed_time = 0.0f;
         int _fps = 0;
@@ -54,31 +54,15 @@ namespace Asteroids
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _spr_font = Content.Load<SpriteFont>("fonts/small_font");
-            horrible_tex = Content.Load<Texture2D>("horrible_texture");
-
+            //we're only going to load the stuff we need for the menu, the other stuff will be loaded when we load our first level
             stateManager = new StateManager(
-                graphics, 
-                Content.Load<Model>("models/ship"), 
-                new Model[3]
-                {
-                    Content.Load<Model>("models/small"),
-                    Content.Load<Model>("models/medium"),
-                    Content.Load<Model>("models/large")
-                },
-                Content.Load<Model>("particles/circle"), 
-                Content.Load<SoundEffect>("sound/engine_2"),
-                Content.Load<SoundEffect>("sound/tx0_fire1"),
-                Content.Load<SoundEffect>("sound/explosion3"),
-                Content.Load<SoundEffect>("sound/engine_2").CreateInstance(),
-                Content.Load<SpriteFont>("fonts/small_font"),
+                graphics,
+                _spr_font,
                 Content.Load<SpriteFont>("fonts/medium_font"),
                 Content.Load<SpriteFont>("fonts/large_font"),
-                new List<Model> {Content.Load<Model>("particles/circle")},
                 Content.Load<Texture2D>("pause_menu"),
                 1
                 );
-            //System.Threading.Thread.Sleep(10000);
-
         }
 
         public void Quit()
@@ -104,7 +88,7 @@ namespace Asteroids
         {
             // Update
             _elapsed_time += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
- 
+
             // 1 Second has passed
             if (_elapsed_time >= 1000.0f)
             {
@@ -112,49 +96,7 @@ namespace Asteroids
                 _total_frames = 0;
                 _elapsed_time = 0;
             }
-            stateManager.Update(gameTime, this, graphics.GraphicsDevice);
-            //state = Keyboard.GetState();
-            //if (gameIsRunning)
-            //{
-            //    float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //    level.Update(state, bulletModel, camera, timeDelta, engineInstance, asteroidModel, explosionSound, lastState, laserSound);
-
-            //    if (state.IsKeyDown(Keys.Escape) || level.player.lives < 0)
-            //    {
-            //        AddHighScore();
-            //        gameIsRunning = false;
-            //    }
-            //    else if (level.asteroidEngine.asteroidList.Count() < 1)
-            //    {
-            //        currentLevel++;
-            //        level = new Level(playerModel, camera, asteroidModel[2], bulletModel, textures, currentLevel);
-            //    }
-
-            //    if (state.IsKeyDown(Keys.P) && level.isPaused == false && lastState.IsKeyUp(Keys.P))
-            //    {
-            //        level.isPaused = true;
-            //    }
-            //    else if (state.IsKeyDown(Keys.P) && level.isPaused == true && lastState.IsKeyUp(Keys.P))
-            //    {
-            //        level.isPaused = false;
-            //    }
-
-            //    lastState = state;
-            //}
-            //else
-            //{
-            //    if (state.IsKeyDown(Keys.Escape))
-            //    {
-            //        this.Exit();
-            //    }
-            //    if (state.IsKeyDown(Keys.Enter))
-            //    {
-            //        LoadFirstLevel();
-            //        startedAt = (float)gameTime.TotalGameTime.TotalSeconds;
-            //        gameIsRunning = true;
-            //    }
-            //}
-
+            stateManager.Update(gameTime, this, graphics.GraphicsDevice, Content);
             base.Update(gameTime);
         }
 
@@ -169,10 +111,10 @@ namespace Asteroids
 
 
             stateManager.Draw(gameTime, spriteBatch, GraphicsDevice);
-            spriteBatch.Begin();
-            //spriteBatch.DrawString(_spr_font, string.Format("FPS={0}", _fps,new Vector2(10.0f, 50.0f), Color.White);
-            //spriteBatch.Draw(horrible_tex, new Vector2(300, 200), Color.Wheat);
-            spriteBatch.End();
+            //spriteBatch.Begin();
+            ////spriteBatch.DrawString(_spr_font, string.Format("FPS={0}", _fps,new Vector2(10.0f, 50.0f), Color.White);
+            ////spriteBatch.Draw(horrible_tex, new Vector2(300, 200), Color.Wheat);
+            //spriteBatch.End();
             base.Draw(gameTime);
         }
     }

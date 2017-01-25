@@ -2,12 +2,14 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 namespace Asteroids
 {
@@ -34,41 +36,27 @@ namespace Asteroids
         SpriteFont small_font, medium_font, large_font;
         SoundEffectInstance engineInstance;
         List<string> highscoresList;
-        float drawTime, oldDrawTime;
+        float drawTime, oldDrawTime, timeBeginLoad;
         GraphicsDeviceManager graphics;
         GameState gameState;
-        private float timeBeginLoad;
-        DustEngine dustEngine;
+        DustEngine dustEngineFar, dustEngineMiddle, dustEngineNear;
+        private bool isLoading = false;
+        private Thread backgroundThread;
+        Random random;
 
         public StateManager(
-            GraphicsDeviceManager graphics, 
-            Model playerModel, 
-            Model[] asteroidModel, 
-            Model bulletModel,
-            SoundEffect engineSound, 
-            SoundEffect laserSound, 
-            SoundEffect explosionSound, 
-            SoundEffectInstance engineInstance, 
+            GraphicsDeviceManager graphics,
             SpriteFont small_font,
             SpriteFont medium_font,
             SpriteFont large_font,
-            List<Model> textures,
             Texture2D pauseMenuImage,
             int currentLevel)
         {
             gameState = GameState.StartMenu;
             this.graphics = graphics;
-            this.playerModel = playerModel;
-            this.asteroidModel = asteroidModel;
-            this.bulletModel = bulletModel;
-            this.engineSound = engineSound;
-            this.laserSound = laserSound;
-            this.explosionSound = explosionSound;
-            this.engineInstance = engineInstance;
             this.small_font = small_font;
             this.medium_font = medium_font;
             this.large_font = large_font;
-            this.textures = textures;
             this.currentLevel = currentLevel;
             this.pauseMenuImage = pauseMenuImage;
             pauseMenu = new Menu(small_font, medium_font, large_font, "PAUSE MENU", new List<String> { "RESUME", "MAIN MENU" }, pauseMenuImage);
@@ -76,16 +64,21 @@ namespace Asteroids
             highScoreMenu = new Menu(small_font, medium_font, large_font, "HIGH SCORES", new List<String> { "BACK" }, pauseMenuImage);
             lastState = Keyboard.GetState();
             camera = new Camera(Vector3.Zero, graphics.GraphicsDevice.Viewport.AspectRatio, MathHelper.ToRadians(90.0f));
-            dustEngine = new DustEngine(graphics.GraphicsDevice);
+
+            random = new Random();
+
+            dustEngineFar = new DustEngine(graphics.GraphicsDevice, 2000, 0.3f, 0.005f, random);
+            dustEngineMiddle = new DustEngine(graphics.GraphicsDevice, 750, 0.5f, 0.01f, random);
+            dustEngineNear = new DustEngine(graphics.GraphicsDevice, 300, 0.8f, 0.05f, random);
             GetHighScores();
         }
 
         public void LoadNewLevel()
-        {           
+        {
             level = new Level(playerModel, camera, asteroidModel[2], bulletModel, textures, currentLevel);
         }
 
-        public void Update(GameTime gameTime, Game1 game, GraphicsDevice graphicsDevice)
+        public void Update(GameTime gameTime, Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
         {
             state = Keyboard.GetState();
             if (gameState == GameState.Playing)
@@ -110,14 +103,13 @@ namespace Asteroids
                 {
                     gameState = GameState.Paused;
                     //pauseMenu.isNew = true;
-                }             
+                }
             }
             else if (gameState == GameState.StartMenu)
             {
                 mainMenu.Update(state, lastState);
                 if (mainMenu.finalSelection == 0)
                 {
-                    LoadNewLevel();
                     System.Console.WriteLine("new level");
                     gameState = GameState.Loading;
                     timeBeginLoad = (float)gameTime.TotalGameTime.TotalMilliseconds;
@@ -125,7 +117,7 @@ namespace Asteroids
                     mainMenu.currentSelection = 0;
                 }
                 else if (mainMenu.finalSelection == 1)
-                {                    
+                {
                     gameState = GameState.HighScore;
                     mainMenu.finalSelection = -10;
                     mainMenu.currentSelection = 0;
@@ -133,7 +125,7 @@ namespace Asteroids
                 else if (mainMenu.finalSelection == 2)
                 {
                     mainMenu.finalSelection = -10;
-                    game.Quit();                    
+                    game.Quit();
                 }
             }
             else if (gameState == GameState.Paused)
@@ -147,14 +139,14 @@ namespace Asteroids
                 if (pauseMenu.finalSelection == 0)
                 {
                     gameState = GameState.Playing;
-                    System.Console.WriteLine("playing");
+                    //System.Console.WriteLine("playing");
                     pauseMenu.finalSelection = -10;
                     pauseMenu.currentSelection = 0;
                 }
                 if (pauseMenu.finalSelection == 1)
                 {
                     gameState = GameState.StartMenu;
-                    System.Console.WriteLine("menu");
+                    //System.Console.WriteLine("menu");
                     pauseMenu.finalSelection = -10;
                     pauseMenu.currentSelection = 0;
                 }
@@ -170,15 +162,42 @@ namespace Asteroids
                     highScoreMenu.currentSelection = 0;
                 }
             }
-            else if (gameState == GameState.Loading)
+            else if (gameState == GameState.Loading && !isLoading)
             {
-                if ((float)gameTime.TotalGameTime.TotalMilliseconds >= timeBeginLoad + 5000f)
-                {
-                    gameState = GameState.Playing;
-                }
+                //we show a loading screen while we wait for the loading thread to flag that it's finished loading
+                backgroundThread = new Thread(() => LoadLevelContent(content));
+                isLoading = true;
+
+                //start backgroundthread
+                backgroundThread.Start();
             }
-            dustEngine.Update(graphicsDevice);
+            //not updating this one for now because its so big
+            //dustEngineFar.Update(graphicsDevice);
+            dustEngineMiddle.Update(graphicsDevice);
+            dustEngineNear.Update(graphicsDevice);
             lastState = state;
+        }
+
+        void LoadLevelContent(ContentManager content)
+        {
+            //this method gets ran by a thread, it will load our game content on a thread and flag when it is ready
+            playerModel = content.Load<Model>("models/ship2");
+            asteroidModel = new Model[3]
+            {
+                    content.Load<Model>("models/small"),
+                    content.Load<Model>("models/medium"),
+                    content.Load<Model>("models/large")
+            };
+            bulletModel = content.Load<Model>("particles/circle");
+            engineSound = content.Load<SoundEffect>("sound/engine_2");
+            laserSound = content.Load<SoundEffect>("sound/tx0_fire1");
+            explosionSound = content.Load<SoundEffect>("sound/explosion3");
+            engineInstance = content.Load<SoundEffect>("sound/engine_2").CreateInstance();
+            textures = new List<Model> { content.Load<Model>("particles/circle") };
+            Thread.Sleep(1000);//add a 1 second wait onto the end of the loading thread so we avoid nasty flashes of the loading screen when content has already been loaded previously
+            LoadNewLevel();
+            isLoading = false;
+            gameState = GameState.Playing;
         }
 
         public void GetHighScores()
@@ -189,7 +208,7 @@ namespace Asteroids
             highscoresList.Reverse();
             foreach (string score in highscoresList)
             {
-                //System.Console.WriteLine(score);
+                System.Console.WriteLine(score);
             }
         }
 
@@ -200,7 +219,7 @@ namespace Asteroids
             for (int s = 1; s < highscoresList.Count(); s++)
             {
                 highscoresList[s] = highscoresList[s] + "-";
-                //System.Console.WriteLine(highscoresList[s]);
+                System.Console.WriteLine(highscoresList[s]);
             }
             string highscore = String.Join(String.Empty, highscoresList);
             File.WriteAllText("Content/files/highscores.txt", highscore);
@@ -208,6 +227,9 @@ namespace Asteroids
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
         {
+            dustEngineFar.Draw(spriteBatch);
+            dustEngineMiddle.Draw(spriteBatch);
+            dustEngineNear.Draw(spriteBatch);
             if (gameState == GameState.Playing)
             {
                 if (level.isActive)
@@ -243,10 +265,9 @@ namespace Asteroids
                 float scale = 1 + pulsate * 0.05f;
                 float width = graphicsDevice.Viewport.Width;
                 float height = graphicsDevice.Viewport.Height;
-                spriteBatch.DrawString(large_font, "LOADING", new Vector2(width / 2, (height / 2) - ((large_font.MeasureString("LOADING").Y/2))), choiceColor, 0, new Vector2(large_font.MeasureString("LOADING").Length() / 2, large_font.MeasureString("LOADING").Y /2), scale, SpriteEffects.None, 0);
+                spriteBatch.DrawString(large_font, "LOADING", new Vector2(width / 2, (height / 2) - ((large_font.MeasureString("LOADING").Y / 2))), choiceColor, 0, new Vector2(large_font.MeasureString("LOADING").Length() / 2, large_font.MeasureString("LOADING").Y / 2), scale, SpriteEffects.None, 0);
                 spriteBatch.End();
             }
-            dustEngine.Draw(spriteBatch);
-        }        
+        }
     }
 }

@@ -2,7 +2,6 @@ Content\models\large.xnb
 Content\models\ship.xnb
 Content\models\medium.xnb
 Content\models\small.xnb
-Content\models\ship2.xnb
 Content\background.xnb
 Content\particles\diamond.xnb
 Content\particles\star.xnb
@@ -22,3 +21,7 @@ Content\models\shiptexture_0.xnb
 Content\models\pea_proj_0.xnb
 Content\particles\tiny_circle.xnb
 Content\horrible_texture.xnb
+Content\space_frigate_6\space_frigate_6_color_0.xnb
+Content\models\space_frigate_6.xnb
+Content\models\ship3.xnb
+Content\models\ship2.xnb
