@@ -74,7 +74,7 @@ namespace Asteroids
                     }
                 }
             }
-            //bullet VS asteroid collision check
+            //asteroid VS asteroid collision check
             for (int i = 0; i < asteroidEngine.asteroidList.Count(); i++)//for each asteroid
             {
                 if (asteroidEngine.asteroidList[i].isActive && !asteroidEngine.asteroidList[i].isColliding)//check if asteroid is active
@@ -157,8 +157,8 @@ namespace Asteroids
             //spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.DrawString(font, "LIVES: " + lives, new Vector2(10, 0), Color.White);
             spriteBatch.DrawString(font, "LEVEL: " + level, new Vector2(10, 20), Color.White);
-            spriteBatch.DrawString(font, "SCORE: " + score, new Vector2(10, 450), Color.White);
-            spriteBatch.DrawString(font, "ASTEROIDS: " + asteroids, new Vector2(width - (font.MeasureString("ASTEROIDS: " + asteroids).Length()+10), 450), Color.White);
+            spriteBatch.DrawString(font, "SCORE: " + score, new Vector2(10, height- (font.MeasureString("SCORE").Y)), Color.White);
+            spriteBatch.DrawString(font, "ASTEROIDS: " + asteroids, new Vector2(width - (font.MeasureString("ASTEROIDS: " + asteroids).Length()+10), height - (font.MeasureString("ASTEROIDS").Y)), Color.White);
             spriteBatch.DrawString(font, "MULTIPLIER: " + multiplier.ToString("0.00"), new Vector2(width - (font.MeasureString("MULTIPLIER: " + multiplier.ToString("0.00")).Length()+10), 0), Color.White);
         }
     }

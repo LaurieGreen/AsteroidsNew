@@ -139,13 +139,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="pause_menu.png">
-      <Name>pause_menu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="fonts\large_font.spritefont">
       <Name>large_font</Name>
       <Importer>FontDescriptionImporter</Importer>

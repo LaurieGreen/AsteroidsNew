@@ -91,15 +91,11 @@ namespace Asteroids
 
             if (!isActive)
             {
-                int total = 25;
-                for (int j = 0; j < total; j++)
-                {
-                    Vector3 velocity = new Vector3(1f * (float)(random.NextDouble() * 2 - 1), 1f * (float)(random.NextDouble() * 2 - 1), 0);
-                    explosionParticle.particles.Add(explosionParticle.GenerateNewParticle(Position, Vector3.Multiply(velocity, 0.1f), camera));
-                }
+                explosion(camera);
                 lives--;
                 Reset();
             }
+
 
             if (state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.A))
             {
@@ -144,7 +140,8 @@ namespace Asteroids
 
             }
             engineParticle.Update();
-         
+            explosionParticle.Update();
+
             Position -= Velocity;
             Velocity *= 0.999f;
             if (Position.X > GameConstants.PlayfieldSizeX)
@@ -156,6 +153,16 @@ namespace Asteroids
             if (Position.Y < -GameConstants.PlayfieldSizeY)
                 Position.Y += 2 * GameConstants.PlayfieldSizeY;
 
+        }
+
+        private void explosion(Camera camera)
+        {
+            int total = 25;
+            for (int j = 0; j < total; j++)
+            {
+                Vector3 velocity = new Vector3(1f * (float)(random.NextDouble() * 2 - 1), 1f * (float)(random.NextDouble() * 2 - 1), 0);
+                explosionParticle.particles.Add(explosionParticle.GenerateNewParticle(Position, Vector3.Multiply(velocity, 0.1f), camera));
+            }
         }
 
         public void Reset()
@@ -188,6 +195,7 @@ namespace Asteroids
                 camera.DrawModel(CurrentTexture, shipTransformMatrix, Transforms, camera, new Vector3(0,0,255));
             }
             engineParticle.Draw(camera);
+            explosionParticle.Draw(camera);
         }
     }
 }

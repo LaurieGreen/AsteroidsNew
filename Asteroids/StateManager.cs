@@ -23,12 +23,13 @@ namespace Asteroids
             Playing,
             Paused
         }
+
+        Texture2D rect;
         Menu pauseMenu, mainMenu, highScoreMenu;
         Level level;
         int currentLevel;
         Camera camera;
         Model playerModel, bulletModel;
-        Texture2D pauseMenuImage;
         Model[] asteroidModel;
         List<Model> textures;
         KeyboardState state, lastState;
@@ -48,22 +49,22 @@ namespace Asteroids
             GraphicsDeviceManager graphics,
             SpriteFont small_font,
             SpriteFont medium_font,
-            SpriteFont large_font,
-            Texture2D pauseMenuImage,
-            int currentLevel)
+            SpriteFont large_font)
         {
             gameState = GameState.StartMenu;
             this.graphics = graphics;
             this.small_font = small_font;
             this.medium_font = medium_font;
             this.large_font = large_font;
-            this.currentLevel = currentLevel;
-            this.pauseMenuImage = pauseMenuImage;
-            pauseMenu = new Menu(small_font, medium_font, large_font, "PAUSE MENU", new List<String> { "RESUME", "MAIN MENU" }, pauseMenuImage);
-            mainMenu = new Menu(small_font, medium_font, large_font, "MAIN MENU", new List<String> { "PLAY", "HIGHSCORES", "QUIT" }, pauseMenuImage);
-            highScoreMenu = new Menu(small_font, medium_font, large_font, "HIGH SCORES", new List<String> { "BACK" }, pauseMenuImage);
+            this.currentLevel = 1;
+            pauseMenu = new Menu(small_font, medium_font, large_font, "PAUSE MENU", new List<String> { "RESUME", "MAIN MENU" });
+            mainMenu = new Menu(small_font, medium_font, large_font, "MAIN MENU", new List<String> { "PLAY", "HIGHSCORES", "QUIT" });
+            highScoreMenu = new Menu(small_font, medium_font, large_font, "HIGH SCORES", new List<String> { "BACK" });
             lastState = Keyboard.GetState();
             camera = new Camera(Vector3.Zero, graphics.GraphicsDevice.Viewport.AspectRatio, MathHelper.ToRadians(90.0f));
+
+            rect = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            rect.SetData(new[] { Color.Black });
 
             random = new Random();
 
@@ -181,7 +182,7 @@ namespace Asteroids
         void LoadLevelContent(ContentManager content)
         {
             //this method gets ran by a thread, it will load our game content on a thread and flag when it is ready
-            playerModel = content.Load<Model>("models/ship2");
+            playerModel = content.Load<Model>("models/ship");
             asteroidModel = new Model[3]
             {
                     content.Load<Model>("models/small"),
@@ -242,6 +243,12 @@ namespace Asteroids
                 }
                 level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
                 oldDrawTime = drawTime;
+            }
+            if (gameState != GameState.Playing)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.End();
             }
             if (gameState == GameState.Paused)
             {

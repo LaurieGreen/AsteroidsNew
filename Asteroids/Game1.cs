@@ -29,7 +29,10 @@ namespace Asteroids
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            //graphics.IsFullScreen = true;
+            //graphics.PreferredBackBufferHeight = 400;
+            //graphics.PreferredBackBufferWidth = 400;
+            //graphics.GraphicsDevice.Viewport.AspectRatio.
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
@@ -59,9 +62,7 @@ namespace Asteroids
                 graphics,
                 _spr_font,
                 Content.Load<SpriteFont>("fonts/medium_font"),
-                Content.Load<SpriteFont>("fonts/large_font"),
-                Content.Load<Texture2D>("pause_menu"),
-                1
+                Content.Load<SpriteFont>("fonts/large_font")
                 );
         }
 

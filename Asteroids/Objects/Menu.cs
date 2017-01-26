@@ -19,13 +19,10 @@ namespace Asteroids
         List<String> choiceList;
         String title;
         SpriteFont small_font, medium_font, large_font;
-        Texture2D background;
-        //KeyboardState lastState;
+        
 
-        public Menu(SpriteFont small_font, SpriteFont medium_font, SpriteFont large_font, String title,  List<String> choiceList, Texture2D background)
+        public Menu(SpriteFont small_font, SpriteFont medium_font, SpriteFont large_font, String title,  List<String> choiceList)
         {
-            
-            this.background = background;
             this.small_font = small_font;
             this.medium_font = medium_font;
             this.large_font = large_font;
@@ -72,7 +69,6 @@ namespace Asteroids
         public void Draw(SpriteBatch spriteBatch, float width, float height, Color color, GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), color);
             spriteBatch.DrawString(large_font, "ASTEROIDS", new Vector2(width / 2 - (large_font.MeasureString("ASTEROIDS").Length() / 2), height / 16), Color.White);
             spriteBatch.DrawString(medium_font, title, new Vector2(width / 2 - (medium_font.MeasureString(title).Length() / 2), height / 5 + (2 * medium_font.MeasureString(title).Y)), Color.White);
             for (int i = 0; i < choiceList.Count(); i++)
