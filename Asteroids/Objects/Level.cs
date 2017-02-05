@@ -18,14 +18,19 @@ namespace Asteroids
         public BulletEngine bulletEngine;
         public bool isActive,isPaused;
 
-        public Level(Model playerModel, Camera camera, Model asteroidModel, Model bulletModel, List<Model> textures, int level)
+        public Level(Model playerModel, Camera camera, Model asteroidModel, Model bulletModel, List<Model> textures, int level, int lives, int score)
         {
-            player = new Player(playerModel, Vector3.Zero, Vector3.Zero, camera, textures);
+            player = new Player(playerModel, Vector3.Zero, Vector3.Zero, camera, textures, lives, score);
             asteroidEngine = new AsteroidEngine(asteroidModel, camera, textures, level);
             bulletEngine = new BulletEngine(bulletModel, camera);
             isActive = true;
             isPaused = false;
             asteroidEngine.ResetAsteroids(asteroidModel, camera, level);
+        }
+
+        public Player getPlayer()
+        {
+            return player;
         }
 
         public void Update(KeyboardState state, Model bulletModel, Camera camera, float timeDelta, SoundEffectInstance engineInstance, Model[] asteroidModel, SoundEffect explosionSound, KeyboardState lastState, SoundEffect laserSound)

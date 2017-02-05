@@ -25,6 +25,9 @@ namespace Asteroids
         public const int NumBullets = 30;
         public const float BulletSpeedAdjustment = 7.0f;
 
+        public const bool Debug = false;
+            
+
     }
     
 }

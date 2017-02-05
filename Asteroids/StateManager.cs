@@ -21,13 +21,16 @@ namespace Asteroids
             HighScore,
             Loading,
             Playing,
-            Paused
+            Paused,
+            GameOver,
+            Debug,
         }
 
         Texture2D rect;
-        Menu pauseMenu, mainMenu, highScoreMenu;
+        BasicMenu pauseMenu, mainMenu, debugMenu;
+        HighScoreMenu highScoreMenu;
+        GameOverScreen gameOverMenu;
         Level level;
-        int currentLevel;
         Camera camera;
         Model playerModel, bulletModel;
         Model[] asteroidModel;
@@ -44,6 +47,8 @@ namespace Asteroids
         private bool isLoading = false;
         private Thread backgroundThread;
         Random random;
+        int currentLevel = 1;
+        List<String> mainMenuOptions;
 
         public StateManager(
             GraphicsDeviceManager graphics,
@@ -56,10 +61,24 @@ namespace Asteroids
             this.small_font = small_font;
             this.medium_font = medium_font;
             this.large_font = large_font;
-            this.currentLevel = 1;
-            pauseMenu = new Menu(small_font, medium_font, large_font, "PAUSE MENU", new List<String> { "RESUME", "MAIN MENU" });
-            mainMenu = new Menu(small_font, medium_font, large_font, "MAIN MENU", new List<String> { "PLAY", "HIGHSCORES", "QUIT" });
-            highScoreMenu = new Menu(small_font, medium_font, large_font, "HIGH SCORES", new List<String> { "BACK" });
+            if (GameConstants.Debug)
+            {
+#pragma warning disable CS0162 // Unreachable code detected
+                mainMenuOptions = new List<String> { "PLAY", "HIGHSCORES", "QUIT", "DEBUG" };
+#pragma warning restore CS0162 // Unreachable code detected
+            }
+            else
+            {
+                mainMenuOptions = new List<String> { "PLAY", "HIGHSCORES", "QUIT" };
+            }
+            pauseMenu = new BasicMenu(small_font, medium_font, large_font, "PAUSE MENU", new List<String> { "RESUME", "MAIN MENU" });
+            mainMenu = new BasicMenu(small_font, medium_font, large_font, "MAIN MENU", mainMenuOptions);
+            highScoreMenu = new HighScoreMenu(small_font, medium_font, large_font, "HIGH SCORES", new List<String> { "BACK" });
+            gameOverMenu = new GameOverScreen(small_font, medium_font, large_font, "GAME OVER", new List<String> {"_", "_", "_", "MAIN MENU" });
+            if (GameConstants.Debug)
+#pragma warning disable CS0162 // Unreachable code detected
+                debugMenu = new BasicMenu(small_font, medium_font, large_font, "DEBUG MENU", new List<string> { "START MENU", "HIGHSCORE", "LOADING", "PLAYING", "PAUSED", "GAME OVER" });
+#pragma warning restore CS0162 // Unreachable code detected
             lastState = Keyboard.GetState();
             camera = new Camera(Vector3.Zero, graphics.GraphicsDevice.Viewport.AspectRatio, MathHelper.ToRadians(90.0f));
 
@@ -71,12 +90,12 @@ namespace Asteroids
             dustEngineFar = new DustEngine(graphics.GraphicsDevice, 2000, 0.3f, 0.005f, random);
             dustEngineMiddle = new DustEngine(graphics.GraphicsDevice, 750, 0.5f, 0.01f, random);
             dustEngineNear = new DustEngine(graphics.GraphicsDevice, 300, 0.8f, 0.05f, random);
-            GetHighScores();
+            SortHighScores();
         }
 
-        public void LoadNewLevel()
+        public void LoadNewLevel(int lives, int score)
         {
-            level = new Level(playerModel, camera, asteroidModel[2], bulletModel, textures, currentLevel);
+            level = new Level(playerModel, camera, asteroidModel[2], bulletModel, textures, currentLevel, lives, score);
         }
 
         public void Update(GameTime gameTime, Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
@@ -90,14 +109,13 @@ namespace Asteroids
 
                 if (level.player.lives < 0)
                 {
-                    AddHighScore();
-                    gameState = GameState.StartMenu;
+                    gameState = GameState.GameOver;
                     //playingTime = playingTime + ((float)gameTime.TotalGameTime.TotalSeconds - pausedTime);
                 }
                 else if (level.asteroidEngine.asteroidList.Count() < 1)
                 {
                     currentLevel++;
-                    LoadNewLevel();
+                    LoadNewLevel(level.getPlayer().getLives(), level.getPlayer().getScore());
                 }
 
                 if ((state.IsKeyDown(Keys.P) && lastState.IsKeyUp(Keys.P)) || (state.IsKeyDown(Keys.Escape) && lastState.IsKeyUp(Keys.Escape))) //P or ESC to pause
@@ -106,12 +124,35 @@ namespace Asteroids
                     //pauseMenu.isNew = true;
                 }
             }
+            else if(gameState == GameState.GameOver)
+            {
+                try
+                {
+                    gameOverMenu.score = level.player.score;
+                }
+                catch(NullReferenceException)
+                {
+                    gameOverMenu.score = 0;
+                }                
+                gameOverMenu.Update(state, lastState);
+                if (gameOverMenu.finalSelection != "")
+                {
+                    gameState = GameState.StartMenu;
+                    
+                    AddHighScore();
+                    gameOverMenu.finalSelection = "";
+                }
+            }
             else if (gameState == GameState.StartMenu)
             {
                 mainMenu.Update(state, lastState);
                 if (mainMenu.finalSelection == 0)
                 {
+                    if (GameConstants.Debug)
+#pragma warning disable CS0162 // Unreachable code detected
                     System.Console.WriteLine("new level");
+#pragma warning restore CS0162 // Unreachable code detected
+
                     gameState = GameState.Loading;
                     timeBeginLoad = (float)gameTime.TotalGameTime.TotalMilliseconds;
                     mainMenu.finalSelection = -10;
@@ -128,15 +169,16 @@ namespace Asteroids
                     mainMenu.finalSelection = -10;
                     game.Quit();
                 }
+                else if (mainMenu.finalSelection == 3)
+                {
+                    gameState = GameState.Debug;
+                    mainMenu.finalSelection = -10;
+                    mainMenu.currentSelection = 0;
+                }
             }
             else if (gameState == GameState.Paused)
             {
                 pauseMenu.Update(state, lastState);
-                //if (state.IsKeyDown(Keys.P) && lastState.IsKeyUp(Keys.P))
-                //{
-                //    gameState = GameState.Playing;
-                //    pausedTime = pausedTime + ((float)gameTime.TotalGameTime.TotalSeconds-playingTime);
-                //}
                 if (pauseMenu.finalSelection == 0)
                 {
                     gameState = GameState.Playing;
@@ -146,7 +188,7 @@ namespace Asteroids
                 }
                 if (pauseMenu.finalSelection == 1)
                 {
-                    gameState = GameState.StartMenu;
+                    gameState = GameState.GameOver;
                     //System.Console.WriteLine("menu");
                     pauseMenu.finalSelection = -10;
                     pauseMenu.currentSelection = 0;
@@ -172,6 +214,46 @@ namespace Asteroids
                 //start backgroundthread
                 backgroundThread.Start();
             }
+            else if (GameConstants.Debug && gameState == GameState.Debug)
+            {
+                debugMenu.Update(state, lastState);
+                if (debugMenu.finalSelection == 0)
+                {
+                    gameState = GameState.StartMenu;
+                    debugMenu.finalSelection = -10;
+                    debugMenu.currentSelection = 0;
+                }
+                else if (debugMenu.finalSelection == 1)
+                {
+                    gameState = GameState.HighScore;
+                    debugMenu.finalSelection = -10;
+                    debugMenu.currentSelection = 0;
+                }
+                else if(debugMenu.finalSelection == 2)
+                {
+                    gameState = GameState.Loading;
+                    debugMenu.finalSelection = -10;
+                    debugMenu.currentSelection = 0;
+                }
+                else if(debugMenu.finalSelection == 3)
+                {
+                    gameState = GameState.Playing;
+                    debugMenu.finalSelection = -10;
+                    debugMenu.currentSelection = 0;
+                }
+                else if(debugMenu.finalSelection == 4)
+                {
+                    gameState = GameState.Paused;
+                    debugMenu.finalSelection = -10;
+                    debugMenu.currentSelection = 0;
+                }
+                else if(debugMenu.finalSelection == 5)
+                {
+                    gameState = GameState.GameOver;
+                    debugMenu.finalSelection = -10;
+                    debugMenu.currentSelection = 0;
+                }
+            }
             //not updating this one for now because its so big
             //dustEngineFar.Update(graphicsDevice);
             dustEngineMiddle.Update(graphicsDevice);
@@ -196,34 +278,87 @@ namespace Asteroids
             engineInstance = content.Load<SoundEffect>("sound/engine_2").CreateInstance();
             textures = new List<Model> { content.Load<Model>("particles/circle") };
             Thread.Sleep(1000);//add a 1 second wait onto the end of the loading thread so we avoid nasty flashes of the loading screen when content has already been loaded previously
-            LoadNewLevel();
+            currentLevel = 1;//reset level to 1 so that
+            LoadNewLevel(GameConstants.NumLives, 0);
             isLoading = false;
             gameState = GameState.Playing;
         }
 
-        public void GetHighScores()
+        public string[] GetHighScores()
         {
-            string[] highscoresArray = File.ReadAllText("Content/files/highscores.txt").Split('-');
-            highscoresList = new List<string>(highscoresArray.Length);
-            highscoresList.AddRange(highscoresArray);
-            highscoresList.Reverse();
-            foreach (string score in highscoresList)
+            //reads the highscores from the file and returns an array holding all of them plus an empty element at the end due to the way 'split' works
+            string[] highscoresArray = File.ReadAllText("Content/files/highscores.txt").Split(',');//go through txt file and create a new array from the things on either side of the commas
+            return highscoresArray;
+        }           
+
+        public void SortHighScores()
+        {
+            //calls the method to read from the high scores file
+            //sorts the highscores and resaves them to the file
+
+            string[] highscoresArray = GetHighScores();
+            //System.Console.WriteLine("this is the array now: " + highscoresArray + "and it is " + highscoresArray.Length + " objects long");
+            int[] scoreArray = new int[highscoresArray.Length];//array for scores
+            String[] nameArray = new String[highscoresArray.Length];//array for names
+            for (int i = 0; i < highscoresArray.Length - 1; i++)//-1 from length because it'll have an empty element at the end of the array because the scores end with a commma
             {
-                System.Console.WriteLine(score);
+                string[] parts = highscoresArray[i].Split(':');
+                //System.Console.WriteLine("is it an integer?" + parts[0]);
+                //System.Console.WriteLine("is it an name?" + parts[i]);
+                scoreArray[i] = Int32.Parse(parts[1]);
+                nameArray[i] = parts[0];
+                if (GameConstants.Debug)
+#pragma warning disable CS0162 // Unreachable code detected
+                System.Console.WriteLine(highscoresArray[i]);
+#pragma warning restore CS0162 // Unreachable code detected
             }
+            Array.Sort(scoreArray, nameArray);
+            //System.Console.WriteLine("array length: " + highscoresArray.Length);
+            for (int i = 0; i < highscoresArray.Length; i++)//-1 from length because it'll have an empty element at the end of the array because the scores end with a commma
+            {
+                highscoresArray[i] = nameArray[i] + ":" + scoreArray[i].ToString() + ",";
+                if (GameConstants.Debug)
+#pragma warning disable CS0162 // Unreachable code detected
+                System.Console.WriteLine(nameArray[i] + ":" + scoreArray[i].ToString() + ",");
+#pragma warning restore CS0162 // Unreachable code detected
+            }
+            string[] transferArray = new string[highscoresArray.Length - 1];
+            for (int i = 0; i < transferArray.Length; i++)
+            {
+                transferArray[i] = highscoresArray[i + 1];//plus 1 to cut out the empty element at the start
+            }
+            highscoresList = new List<string>(transferArray.Length);
+            highscoresList.AddRange(transferArray);
+            highscoresList.Reverse();
+            if (GameConstants.Debug)
+            {
+#pragma warning disable CS0162 // Unreachable code detected
+                System.Console.WriteLine("\n\n THIS IS THE SORTED ARRAY:\n\n");
+#pragma warning restore CS0162 // Unreachable code detected
+                for (int i = 0; i < highscoresList.Count; i++)
+                {
+                    System.Console.WriteLine(highscoresList[i]);
+                }
+            }
+            string highscore = String.Join(String.Empty, highscoresList);
+            File.WriteAllText("Content/files/highscores.txt", highscore);
+            highScoreMenu.SetHighScores(highscoresList);
         }
 
         public void AddHighScore()
         {
-            //highscoresList.OrderByDescending(x => x);
-            highscoresList.Add(level.player.score.ToString());
-            for (int s = 1; s < highscoresList.Count(); s++)
+            try
             {
-                highscoresList[s] = highscoresList[s] + "-";
-                System.Console.WriteLine(highscoresList[s]);
+                highscoresList.Add(gameOverMenu.finalSelection + ":" + level.player.score.ToString() + ",");
+            }
+            catch(NullReferenceException)
+            {
+                highscoresList.Add(gameOverMenu.finalSelection + ":" + 0
+                    + ",");
             }
             string highscore = String.Join(String.Empty, highscoresList);
             File.WriteAllText("Content/files/highscores.txt", highscore);
+            SortHighScores();
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
@@ -244,28 +379,46 @@ namespace Asteroids
                 level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
                 oldDrawTime = drawTime;
             }
-            if (gameState != GameState.Playing)
-            {
-                spriteBatch.Begin();
-                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
-                spriteBatch.End();
-            }
             if (gameState == GameState.Paused)
             {
                 level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
+                spriteBatch.Begin();
+                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.End();
                 pauseMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.70f, gameTime);
             }
             if (gameState == GameState.StartMenu)
             {
+                spriteBatch.Begin();
+                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.End();
                 mainMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
             }
             if (gameState == GameState.HighScore)
             {
+                spriteBatch.Begin();
+                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.End();
                 highScoreMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
+            }
+            if (gameState == GameState.GameOver)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.End();
+                gameOverMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
+            }
+            if ((GameConstants.Debug) && gameState == GameState.Debug)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.End();
+                debugMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
             }
             if (gameState == GameState.Loading)
             {
                 spriteBatch.Begin();
+                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
                 double time = gameTime.TotalGameTime.TotalSeconds;
                 float pulsate = (float)Math.Sin(time * 6) + 1;
                 Color choiceColor = new Color(0, 204, 0);//green

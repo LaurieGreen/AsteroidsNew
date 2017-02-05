@@ -33,11 +33,11 @@ namespace Asteroids
         public bool isInvulnerable;
 
         //consts
-        public int lives = GameConstants.NumLives;
+        public int lives;
         public float multiplier = GameConstants.MultiplierStart;
         float spawnTimer = GameConstants.SpawnTimer;
 
-        public Player(Model currentTexture, Vector3 position, Vector3 velocity, Camera camera, List<Model> particleModel)
+        public Player(Model currentTexture, Vector3 position, Vector3 velocity, Camera camera, List<Model> particleModel, int lives, int score)
         {
             CurrentTexture = currentTexture;
             engineParticle = new ParticleEngine(particleModel);
@@ -50,10 +50,21 @@ namespace Asteroids
             isVisible = true;
             flashTimer = 0.15f;
             random = new Random();
-            score = 0;
+            this.score = score;
+            this.lives = lives;
             Transforms = camera.SetupEffectDefaults(CurrentTexture, camera);
             //cheat
             isInvulnerable = false;
+        }
+
+        public int getScore()
+        {
+            return score;
+        }
+
+        public int getLives()
+        {
+            return lives;
         }
 
         public Vector3 getPosition()
