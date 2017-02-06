@@ -10,12 +10,12 @@ namespace Asteroids
 {
     public class Asteroid
     {
-        public Model CurrentTexture;
-        public Vector3 Position, Velocity, Rotation;
-        public float Speed, RotationXamount, RotationYamount,RotationZamount;
-        public Matrix TransformMatrix, RotationMatrix;
-        public bool isActive, isColliding;
-        public int Life, Mass;
+        Model CurrentTexture;
+        Vector3 Position, Velocity, Rotation;
+        float Speed, RotationXamount, RotationYamount,RotationZamount;
+        Matrix TransformMatrix, RotationMatrix;
+        bool isActive, isColliding;
+        int life, mass;
 
         float collideTimer = GameConstants.AsteroidCollideCooldownTimer;
 
@@ -26,8 +26,8 @@ namespace Asteroids
             Velocity.X = velocityx;
             Velocity.Y = velocityy;
             Speed = speed;
-            Life = life;
-            Mass = mass;
+            this.life = life;
+            this.mass = mass;
             isActive = true;
             isColliding = true;
             RotationXamount = (float) ((rand.NextDouble() * 0.075));
@@ -39,6 +39,21 @@ namespace Asteroids
             RotationZamount = (float)((rand.NextDouble() * 0.075));
             //Console.WriteLine("rotation Z rand: " + RotationZamount+"\n");
 
+        }
+
+        public bool getIsActive()
+        {
+            return isActive;
+        }
+
+        public int getLife()
+        {
+            return life;
+        }
+
+        public void setLife(int i)
+        {
+            life = i;
         }
 
         public void Update(float delta)

@@ -88,8 +88,8 @@ namespace Asteroids
                             asteroidModel[asteroidList[i].Life - 1], //pass in smaller roid
                             asteroidList[i].Position.X, //pass in x position of parent roid
                             asteroidList[i].Position.Y, //pass in y position of parent roid
-                            -asteroidList[i].Velocity.Y/2, //pass in parent -y velocity for x vector 
-                            asteroidList[i].Velocity.X/2,  //pass in parent x velocity for y vector
+                            -asteroidList[i].Velocity.Y, //pass in parent -y velocity for x vector 
+                            asteroidList[i].Velocity.X,  //pass in parent x velocity for y vector
                             asteroidList[i].Speed, 
                             asteroidList[i].Life, 10 * asteroidList[i].Life);// adds perpendicular vector (-y, x)
 
@@ -97,8 +97,8 @@ namespace Asteroids
                             asteroidModel[asteroidList[i].Life - 1], //pass in smaller model
                             asteroidList[i].Position.X, //pass in x position of parent roid
                             asteroidList[i].Position.Y, //pass in y position of parent roid
-                            asteroidList[i].Velocity.Y/2, //pass in parent y velocity for x vector
-                            -asteroidList[i].Velocity.X/2, //pass in parent -x velocity for y vector
+                            asteroidList[i].Velocity.Y, //pass in parent y velocity for x vector
+                            -asteroidList[i].Velocity.X, //pass in parent -x velocity for y vector
                             asteroidList[i].Speed, 
                             asteroidList[i].Life, 10 * asteroidList[i].Life);// adds perpendicular vector (y, -x)
                     }
