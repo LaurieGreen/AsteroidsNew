@@ -12,14 +12,19 @@ namespace Asteroids
     public class BulletEngine
     {
         Model texture;
-        public List<Bullet> bullets;
+        List<Bullet> bullets;
         Matrix[] bulletTransforms;
 
         public BulletEngine(Model texture, Camera camera)
         {
             this.texture = texture;
-            this.bullets = new List<Bullet>(GameConstants.NumBullets);
+            bullets = new List<Bullet>(GameConstants.NumBullets);
             bulletTransforms = camera.SetupEffectDefaults(texture, camera);
+        }
+
+        public List<Bullet> getBullets()
+        {
+            return bullets;
         }
 
         private Bullet GenerateNewBullet(Vector3 direction, float velocity, Vector3 position, Camera camera, int ttl)
@@ -42,7 +47,7 @@ namespace Asteroids
            for (int i = 0; i < bullets.Count; i++)
            {
                 bullets[i].Update(timeDelta);
-                if (bullets[i].TTL <= 0 || bullets[i].isActive == false)
+                if (bullets[i].getTTL() <= 0 || bullets[i].getIsActive() == false)
                 {
                     bullets.RemoveAt(i);
                     i--;

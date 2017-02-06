@@ -173,13 +173,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="horrible_texture.png">
-      <Name>horrible_texture</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="models\space_frigate_6.FBX">
       <Name>space_frigate_6</Name>
       <Importer>FbxImporter</Importer>

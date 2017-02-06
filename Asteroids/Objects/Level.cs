@@ -13,10 +13,10 @@ namespace Asteroids
 {
     class Level
     {
-        public Player player;
-        public AsteroidEngine asteroidEngine;
-        public BulletEngine bulletEngine;
-        public bool isActive,isPaused;
+        Player player;
+        AsteroidEngine asteroidEngine;
+        BulletEngine bulletEngine;
+        bool isActive,isPaused;
 
         public Level(Model playerModel, Camera camera, Model asteroidModel, Model bulletModel, List<Model> textures, int level, int lives, int score)
         {
@@ -31,6 +31,16 @@ namespace Asteroids
         public Player getPlayer()
         {
             return player;
+        }
+
+        public AsteroidEngine getAsteroidEngine()
+        {
+            return asteroidEngine;
+        }
+
+        public bool getIsActive()
+        {
+            return isActive;
         }
 
         public void Update(KeyboardState state, Model bulletModel, Camera camera, float timeDelta, SoundEffectInstance engineInstance, Model[] asteroidModel, SoundEffect explosionSound, KeyboardState lastState, SoundEffect laserSound)
@@ -48,7 +58,7 @@ namespace Asteroids
                
                 player.Update(state, bulletModel, camera, timeDelta, engineInstance);
                 asteroidEngine.Update(timeDelta, asteroidModel, camera);
-                bulletEngine.Update(state, lastState, player.RotationMatrix.Up, GameConstants.BulletSpeedAdjustment, player.Position + (0.725f * player.RotationMatrix.Up), camera, timeDelta, laserSound);
+                bulletEngine.Update(state, lastState, player.getRotationMatrix().Up, GameConstants.BulletSpeedAdjustment, player.getPosition() + (0.725f * player.getRotationMatrix().Up), camera, timeDelta, laserSound);
                 CheckCollisions(bulletModel, explosionSound);
             }
         }
@@ -62,18 +72,18 @@ namespace Asteroids
                 {
                     //give asteroid a bounding sphere
                     BoundingSphere asteroidSphere = new BoundingSphere(asteroidEngine.asteroidList[i].Position, asteroidEngine.asteroidList[i].CurrentTexture.Meshes[0].BoundingSphere.Radius * GameConstants.AsteroidBoundingSphereScale);
-                    for (int j = 0; j < bulletEngine.bullets.Count; j++)//for each bullet
+                    for (int j = 0; j < bulletEngine.getBullets().Count; j++)//for each bullet
                     {
-                        if (bulletEngine.bullets[j].isActive)//check if bullet is active
+                        if (bulletEngine.getBullets()[j].getIsActive())//check if bullet is active
                         {
                             //give bullet a bounding sphere
-                            BoundingSphere bulletSphere = new BoundingSphere(bulletEngine.bullets[j].Position, bulletModel.Meshes[0].BoundingSphere.Radius);
+                            BoundingSphere bulletSphere = new BoundingSphere(bulletEngine.getBullets()[j].getPosition(), bulletModel.Meshes[0].BoundingSphere.Radius);
                             if (asteroidSphere.Intersects(bulletSphere))//if asteroid and bullet intercept
                             {
                                 explosionSound.Play(0.01f, 0, 0);
                                 asteroidEngine.asteroidList[i].isActive = false;
-                                bulletEngine.bullets[j].TTL = -1;
-                                player.hasScored = true;
+                                bulletEngine.getBullets()[j].setTTL(-1);
+                                player.setHasScored(true);
                             }
                         }
                     }
@@ -122,11 +132,11 @@ namespace Asteroids
             }
 
             //ship VS asteroid collision check
-            if (!player.isInvulnerable)
+            if (!player.getIsInvulerable())
             {
-                if (!player.isSpawning)//only check collisions if the player isn't spawning
+                if (!player.getIsSpawning())//only check collisions if the player isn't spawning
                 {
-                    BoundingSphere shipSphere = new BoundingSphere(player.Position, player.CurrentTexture.Meshes[0].BoundingSphere.Radius * GameConstants.ShipBoundingSphereScale);
+                    BoundingSphere shipSphere = new BoundingSphere(player.getPosition(), player.getCurrentTexture().Meshes[0].BoundingSphere.Radius * GameConstants.ShipBoundingSphereScale);
                     for (int i = 0; i < asteroidEngine.asteroidList.Count(); i++)
                     {
                         if (asteroidEngine.asteroidList[i].isActive == true)
@@ -135,7 +145,7 @@ namespace Asteroids
                             if (b.Intersects(shipSphere))
                             {
                                 //blow up ship
-                                player.isActive = false;
+                                player.setIsActive(false);
                                 explosionSound.Play(0.1f, 0, 0);
                                 break;
                             }
@@ -148,7 +158,7 @@ namespace Asteroids
         public void Draw(Camera camera, float timeDelta, SpriteFont font, SpriteBatch spriteBatch, int level, float width, float height)
         {
             spriteBatch.Begin();
-            DrawUI(camera, level, player.score, player.lives, asteroidEngine.asteroidList.Count(), player.multiplier, font, spriteBatch, width, height);
+            DrawUI(camera, level, player.getScore(), player.getLives(), asteroidEngine.asteroidList.Count(), player.getMultiplier(), font, spriteBatch, width, height);
             spriteBatch.End();
             player.Draw(camera, timeDelta);
             asteroidEngine.Draw(camera);

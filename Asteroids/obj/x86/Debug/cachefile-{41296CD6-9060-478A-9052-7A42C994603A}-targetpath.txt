@@ -8,7 +8,6 @@ Content\models\ship3.xnb
 Content\background.xnb
 Content\particles\diamond.xnb
 Content\particles\star.xnb
-Content\horrible_texture.xnb
 Content\particles\rectangle.xnb
 Content\particles\circle.xnb
 Content\models\pea_proj.xnb

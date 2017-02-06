@@ -9,12 +9,12 @@ namespace Asteroids
 {
     public class Particle
     {
-        public Model Texture { get; set; }        // The texture that will be drawn to represent the particle
-        public Vector3 Position { get; set; }        // The current position of the particle        
-        public Vector3 Velocity { get; set; }        // The speed of the particle at the current instance
-        public Color Color { get; set; }            // The color of the particle
-        public float Size { get; set; }                // The size of the particle
-        public int TTL { get; set; }                // The 'time to live' of the particle
+        Model Texture;     // The texture that will be drawn to represent the particle
+        Vector3 Position;    // The current position of the particle        
+        Vector3 Velocity;        // The speed of the particle at the current instance
+        Color Color;           // The color of the particle
+        float Size;                // The size of the particle
+        int TTL;              // The 'time to live' of the particle
 
         public Particle(Model texture, Vector3 position, Vector3 velocity, int ttl)
         {
@@ -22,6 +22,11 @@ namespace Asteroids
             Position = position;
             Velocity = velocity;
             TTL = ttl;
+        }
+
+        public int getTTL()
+        {
+            return TTL;
         }
 
         public void Update()

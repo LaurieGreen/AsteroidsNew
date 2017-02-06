@@ -9,13 +9,13 @@ namespace Asteroids
 {
     public class Bullet
     {
-        public Model Texture { get; set; }        // The texture that will be drawn to represent the particle
-        public Vector3 Position { get; set; }        // The current position of the particle        
-        public float Velocity { get; set; }        // The speed of the particle at the current instance
-        public Vector3 Direction;
-        public Matrix TransformMatrix;
-        public bool isActive = true;
-        public int TTL;
+        Model Texture;       // The texture that will be drawn to represent the particle
+        Vector3 Position;       // The current position of the particle        
+        float Velocity;     // The speed of the particle at the current instance
+        Vector3 Direction;
+        Matrix TransformMatrix;
+        bool isActive = true;
+        int TTL;
 
         public Bullet(Model texture, float velocity, Vector3 direction,Vector3 position, Camera camera, int ttl)
         {
@@ -24,6 +24,31 @@ namespace Asteroids
             Velocity = velocity;
             Texture = texture;
             TTL = ttl;
+        }
+
+        public Vector3 getPosition()
+        {
+            return Position;
+        }
+
+        public bool getIsActive()
+        {
+            return isActive;
+        }
+
+        public void setIsActive(bool b)
+        {
+            isActive = b;
+        }
+
+        public int getTTL()
+        {
+            return TTL;
+        }
+
+        public void setTTL(int i)
+        {
+            TTL = i;
         }
 
         public void Update(float delta)

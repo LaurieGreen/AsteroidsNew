@@ -13,28 +13,27 @@ namespace Asteroids
 {
     public class Player
     {
-        public Model CurrentTexture;
-        public ParticleEngine engineParticle, explosionParticle;
-        public Vector3 Position;
-        public Vector3 Velocity;
-        public Vector3 VelocityAdd;
-        public float Rotation;
-        public Matrix[] Transforms;
-        public Matrix shipTransformMatrix;
-        public Matrix RotationMatrix;
-        public int score;
-        public bool isActive;
-        public bool isSpawning;
-        public bool hasScored;
+        Model CurrentTexture;
+        ParticleEngine engineParticle, explosionParticle;
+        Vector3 Position;
+        Vector3 Velocity;
+        float Rotation;
+        Matrix[] Transforms;
+        Matrix shipTransformMatrix;
+        Matrix RotationMatrix;
+        int score;
+        bool isActive;
+        bool isSpawning;
+        bool hasScored;
         Random random;
         float flashTimer;
         bool isVisible;
         float lastTime;
-        public bool isInvulnerable;
+        bool isInvulnerable;
 
         //consts
-        public int lives;
-        public float multiplier = GameConstants.MultiplierStart;
+        int lives;
+        float multiplier = GameConstants.MultiplierStart;
         float spawnTimer = GameConstants.SpawnTimer;
 
         public Player(Model currentTexture, Vector3 position, Vector3 velocity, Camera camera, List<Model> particleModel, int lives, int score)
@@ -70,6 +69,46 @@ namespace Asteroids
         public Vector3 getPosition()
         {
             return Position;
+        }
+
+        public Matrix getRotationMatrix()
+        {
+            return RotationMatrix;
+        }
+
+        public bool getHasScored()
+        {
+            return hasScored;
+        }
+
+        public void  setHasScored(bool b)
+        {
+            hasScored = b;
+        }
+
+        public bool getIsInvulerable()
+        {
+            return isInvulnerable;
+        }
+
+        public bool getIsSpawning()
+        {
+            return isSpawning;
+        }
+
+        public void setIsActive(bool b)
+        {
+            isActive = b;
+        }
+
+        public Model getCurrentTexture()
+        {
+            return CurrentTexture;
+        }
+
+        public float getMultiplier()
+        {
+            return multiplier;
         }
 
         public void Update(KeyboardState state, Model bulletModel, Camera camera, float timeDelta, SoundEffectInstance engineInstance)

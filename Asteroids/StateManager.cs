@@ -107,12 +107,12 @@ namespace Asteroids
                 //float thisplayingTime = (float)gameTime.TotalGameTime.TotalSeconds;
                 level.Update(state, bulletModel, camera, timeDelta, engineInstance, asteroidModel, explosionSound, lastState, laserSound);
 
-                if (level.player.lives < 0)
+                if (level.getPlayer().getLives() < 0)
                 {
                     gameState = GameState.GameOver;
                     //playingTime = playingTime + ((float)gameTime.TotalGameTime.TotalSeconds - pausedTime);
                 }
-                else if (level.asteroidEngine.asteroidList.Count() < 1)
+                else if (level.getAsteroidEngine().asteroidList.Count() < 1)
                 {
                     currentLevel++;
                     LoadNewLevel(level.getPlayer().getLives(), level.getPlayer().getScore());
@@ -128,7 +128,7 @@ namespace Asteroids
             {
                 try
                 {
-                    gameOverMenu.score = level.player.score;
+                    gameOverMenu.score = level.getPlayer().getScore();
                 }
                 catch(NullReferenceException)
                 {
@@ -349,7 +349,7 @@ namespace Asteroids
         {
             try
             {
-                highscoresList.Add(gameOverMenu.finalSelection + ":" + level.player.score.ToString() + ",");
+                highscoresList.Add(gameOverMenu.finalSelection + ":" + level.getPlayer().getScore().ToString() + ",");
             }
             catch(NullReferenceException)
             {
@@ -363,12 +363,14 @@ namespace Asteroids
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
         {
+            int width = graphicsDevice.Viewport.Width;
+            int height = graphicsDevice.Viewport.Height;
             dustEngineFar.Draw(spriteBatch);
             dustEngineMiddle.Draw(spriteBatch);
             dustEngineNear.Draw(spriteBatch);
             if (gameState == GameState.Playing)
             {
-                if (level.isActive)
+                if (level.getIsActive())
                 {
                     drawTime = (float)gameTime.TotalGameTime.TotalSeconds;
                 }
@@ -376,55 +378,53 @@ namespace Asteroids
                 {
                     drawTime = oldDrawTime;
                 }
-                level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
+                level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, width, height);
                 oldDrawTime = drawTime;
             }
             if (gameState == GameState.Paused)
             {
-                level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
+                level.Draw(camera, drawTime, small_font, spriteBatch, currentLevel, width, height);
                 spriteBatch.Begin();
-                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.Draw(rect, new Rectangle(0, 0, width, height), Color.Black * 0.5f);
                 spriteBatch.End();
-                pauseMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.70f, gameTime);
+                pauseMenu.Draw(spriteBatch, width, height, Color.White * 0.70f, gameTime);
             }
             if (gameState == GameState.StartMenu)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.Draw(rect, new Rectangle(0, 0, width, height), Color.Black * 0.5f);
                 spriteBatch.End();
-                mainMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
+                mainMenu.Draw(spriteBatch, width, height, Color.White * 0.00f, gameTime);
             }
             if (gameState == GameState.HighScore)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.Draw(rect, new Rectangle(0, 0, width, height), Color.Black * 0.5f);
                 spriteBatch.End();
-                highScoreMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
+                highScoreMenu.Draw(spriteBatch, width, height, Color.White * 0.00f, gameTime);
             }
             if (gameState == GameState.GameOver)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.Draw(rect, new Rectangle(0, 0, width, height), Color.Black * 0.5f);
                 spriteBatch.End();
-                gameOverMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
+                gameOverMenu.Draw(spriteBatch, width, height, Color.White * 0.00f, gameTime);
             }
             if ((GameConstants.Debug) && gameState == GameState.Debug)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.Draw(rect, new Rectangle(0, 0, width, height), Color.Black * 0.5f);
                 spriteBatch.End();
-                debugMenu.Draw(spriteBatch, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height, Color.White * 0.00f, gameTime);
+                debugMenu.Draw(spriteBatch, width, height, Color.White * 0.00f, gameTime);
             }
             if (gameState == GameState.Loading)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(rect, new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), Color.Black * 0.5f);
+                spriteBatch.Draw(rect, new Rectangle(0, 0, width, height), Color.Black * 0.5f);
                 double time = gameTime.TotalGameTime.TotalSeconds;
                 float pulsate = (float)Math.Sin(time * 6) + 1;
                 Color choiceColor = new Color(0, 204, 0);//green
                 float scale = 1 + pulsate * 0.05f;
-                float width = graphicsDevice.Viewport.Width;
-                float height = graphicsDevice.Viewport.Height;
                 spriteBatch.DrawString(large_font, "LOADING", new Vector2(width / 2, (height / 2) - ((large_font.MeasureString("LOADING").Y / 2))), choiceColor, 0, new Vector2(large_font.MeasureString("LOADING").Length() / 2, large_font.MeasureString("LOADING").Y / 2), scale, SpriteEffects.None, 0);
                 spriteBatch.End();
             }

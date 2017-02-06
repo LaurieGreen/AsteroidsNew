@@ -57,7 +57,6 @@ C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\mode
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\background.xnb
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\diamond.xnb
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\star.xnb
-C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\horrible_texture.xnb
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\rectangle.xnb
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\particles\circle.xnb
 C:\Users\Laurie\Dev\XNA\Asteroids\Asteroids\Asteroids\bin\x86\Debug\Content\models\pea_proj.xnb

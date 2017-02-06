@@ -49,7 +49,7 @@ namespace Asteroids
             for (int particle = 0; particle < particles.Count; particle++)
             {
                 particles[particle].Update();
-                if (particles[particle].TTL <= 0)
+                if (particles[particle].getTTL() <= 0)
                 {
                     particles.RemoveAt(particle);
                     particle--;
