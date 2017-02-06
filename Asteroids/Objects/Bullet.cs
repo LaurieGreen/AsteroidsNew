@@ -64,7 +64,7 @@ namespace Asteroids
 
         public void Draw(Camera camera, Matrix[] bulletTransforms)
         {
-            Matrix world = Matrix.CreateBillboard(Position, camera.Position, Vector3.Up, camera.Target - camera.Position);
+            Matrix world = Matrix.CreateBillboard(Position, camera.getPosition(), Vector3.Up, camera.getTarget() - camera.getPosition());
             camera.DrawBullet(Texture, camera, world);
         }
     }

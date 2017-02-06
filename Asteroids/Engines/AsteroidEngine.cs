@@ -42,8 +42,8 @@ namespace Asteroids
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.LightingEnabled = true;
-                    effect.Projection = camera.Projection;
-                    effect.View = camera.View;
+                    effect.Projection = camera.getProjection();
+                    effect.View = camera.getView();
                 }
             }
             return absoluteTransforms;

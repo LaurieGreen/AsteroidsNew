@@ -128,11 +128,11 @@ namespace Asteroids
             {
                 try
                 {
-                    gameOverMenu.score = level.getPlayer().getScore();
+                    gameOverMenu.setScore(level.getPlayer().getScore());
                 }
                 catch(NullReferenceException)
                 {
-                    gameOverMenu.score = 0;
+                    gameOverMenu.setScore(0);
                 }                
                 gameOverMenu.Update(state, lastState);
                 if (gameOverMenu.getFinalSelection() != "")

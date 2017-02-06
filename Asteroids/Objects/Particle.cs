@@ -37,7 +37,7 @@ namespace Asteroids
 
         public void Draw(Camera camera)
         {
-            Matrix world = Matrix.CreateBillboard(Position, camera.Position, Vector3.Up, camera.Target - camera.Position);
+            Matrix world = Matrix.CreateBillboard(Position, camera.getPosition(), Vector3.Up, camera.getTarget() - camera.getPosition());
             camera.DrawParticle(Texture,camera, world);
         }
     }

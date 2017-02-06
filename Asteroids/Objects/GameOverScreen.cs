@@ -13,15 +13,15 @@ namespace Asteroids
 {
     public class GameOverScreen
     {
-        public String finalSelection = "";
+        String finalSelection = "";
         //public bool isNew = false;
-        public int currentSelection;
+        int currentSelection;
         String[] letterList = new String[26] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
         String confirmationMessage = "PRESS ENTER WHEN DONE";
         int firstletter = 0;
         int secondletter = 0;
         int thirdletter = 0;
-        public int score = 0;
+        int score = 0;
         String[] choiceList;
         String title;
         SpriteFont small_font, medium_font, large_font;
@@ -34,6 +34,16 @@ namespace Asteroids
             this.title = title;
             this.choiceList = new String[] { letterList[0], letterList[0], letterList[0] };
             currentSelection = 0;
+        }
+
+        public int getScore()
+        {
+            return score;
+        }
+
+        public void setScore(int i)
+        {
+            score = i;
         }
 
         public void setCurrentSelection(int i)

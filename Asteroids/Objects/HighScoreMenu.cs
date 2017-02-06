@@ -13,9 +13,9 @@ namespace Asteroids
 {
     public class HighScoreMenu
     {
-        public int finalSelection = -10;
+        int finalSelection = -10;
         //public bool isNew = false;
-        public int currentSelection;
+        int currentSelection;
         List<String> choiceList;
         String[] highScores = new String[10];
         String title;
