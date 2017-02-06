@@ -75,7 +75,7 @@ namespace Asteroids
                     BoundingSphere asteroidSphere = new BoundingSphere(asteroidEngine.getAsteroidList()[i].getPosition(), asteroidEngine.getAsteroidList()[i].getCurrentTexture().Meshes[0].BoundingSphere.Radius * GameConstants.AsteroidBoundingSphereScale);
                     for (int j = 0; j < bulletEngine.getBullets().Count; j++)//for each bullet
                     {
-                        if (bulletEngine.getBullets()[j].getIsActive())//check if bullet is active
+                        if (bulletEngine.getBullets()[j].IsActive())//check if bullet is active
                         {
                             //give bullet a bounding sphere
                             BoundingSphere bulletSphere = new BoundingSphere(bulletEngine.getBullets()[j].getPosition(), bulletModel.Meshes[0].BoundingSphere.Radius);

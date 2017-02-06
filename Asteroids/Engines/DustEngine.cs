@@ -9,8 +9,8 @@ namespace Asteroids
 {
     class DustEngine
     {
-        public List<Dust> dustList;
-        private Texture2D texture;
+        List<Dust> dustList;
+        Texture2D texture;
         //Random random = new Random();
         float x, y, x2, y2, opacity, speedMultiplier;
 

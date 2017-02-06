@@ -13,9 +13,9 @@ namespace Asteroids
 {
     public class BasicMenu
     {
-        public int finalSelection = -10;
+        int finalSelection = -10;
         //public bool isNew = false;
-        public int currentSelection;
+        int currentSelection;
         List<String> choiceList;
         String title;
         SpriteFont small_font, medium_font, large_font;
@@ -31,6 +31,24 @@ namespace Asteroids
             currentSelection = 0;
         }
 
+        public void setCurrentSelection(int i)
+        {
+            currentSelection = i;
+        }
+
+        public void setFinalSelection(int i)
+        {
+            finalSelection = i;
+        }
+        public int getFinalSelection()
+        {
+            return finalSelection;
+        }
+
+        public int getCurrentSelection()
+        {
+            return currentSelection;
+        }
         public void MoveSelectionUp()
         {
             if (currentSelection > 0)

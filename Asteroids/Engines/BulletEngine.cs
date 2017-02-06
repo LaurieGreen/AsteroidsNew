@@ -47,7 +47,7 @@ namespace Asteroids
            for (int i = 0; i < bullets.Count; i++)
            {
                 bullets[i].Update(timeDelta);
-                if (bullets[i].getTTL() <= 0 || bullets[i].getIsActive() == false)
+                if (bullets[i].getTTL() <= 0 || bullets[i].IsActive() == false)
                 {
                     bullets.RemoveAt(i);
                     i--;

@@ -9,9 +9,9 @@ namespace Asteroids
 {
     class Dust
     {
-        public Texture2D Texture;        // The texture that will be drawn to represent the particle
-        public Vector2 Position;       // The current position of the particle        
-        public Vector2 Velocity;     // The speed of the particle at the current instance
+        Texture2D Texture;        // The texture that will be drawn to represent the particle
+        Vector2 Position;       // The current position of the particle        
+        Vector2 Velocity;     // The speed of the particle at the current instance
 
         public Dust(Texture2D texture, float x, float y, float x2, float y2, Random random)
         {

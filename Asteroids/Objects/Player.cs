@@ -166,7 +166,7 @@ namespace Asteroids
             if (state.IsKeyDown(Keys.Up) || state.IsKeyDown(Keys.W))
             {
                 Velocity += VelocityAdd;
-                engineParticle.particles.Add(engineParticle.GenerateNewParticle(Position + (-0.725f * RotationMatrix.Up), Velocity * 0.5f, camera));
+                engineParticle.getParticles().Add(engineParticle.GenerateNewParticle(Position + (-0.725f * RotationMatrix.Up), Velocity * 0.5f, camera));
                 if (engineInstance.State == SoundState.Stopped)
                 {
                     engineInstance.Volume = 0.75f;
@@ -211,7 +211,7 @@ namespace Asteroids
             for (int j = 0; j < total; j++)
             {
                 Vector3 velocity = new Vector3(1f * (float)(random.NextDouble() * 2 - 1), 1f * (float)(random.NextDouble() * 2 - 1), 0);
-                explosionParticle.particles.Add(explosionParticle.GenerateNewParticle(Position, Vector3.Multiply(velocity, 0.1f), camera));
+                explosionParticle.getParticles().Add(explosionParticle.GenerateNewParticle(Position, Vector3.Multiply(velocity, 0.1f), camera));
             }
         }
 

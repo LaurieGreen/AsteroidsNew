@@ -36,6 +36,25 @@ namespace Asteroids
             currentSelection = 0;
         }
 
+        public void setCurrentSelection(int i)
+        {
+            currentSelection = i;
+        }
+
+        public void setFinalSelection(String s)
+        {
+            finalSelection = s;
+        }
+
+        public String getFinalSelection()
+        {
+            return finalSelection;
+        }
+
+        public int getCurrentSelection()
+        {
+            return currentSelection;
+        }
         public void MoveSelectionRight()
         {
             if (currentSelection < 2)

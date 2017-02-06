@@ -10,10 +10,10 @@ namespace Asteroids
 {
     public class ParticleEngine
     {
-        private Random random;
+        Random random;
         //public Vector3 EmitterLocation { get; set; }
-        public List<Particle> particles;
-        private List<Model> textures;
+        List<Particle> particles;
+        List<Model> textures;
         
 
         public ParticleEngine(List<Model> textures)
@@ -32,20 +32,14 @@ namespace Asteroids
             return new Particle(texture, position, velocity, ttl);
         }
 
+        public List<Particle> getParticles()
+        {
+            return particles;
+        }
+
         //public void Update(Vector3 position, Vector3 velocity, KeyboardState state, Camera camera)
         public void Update()
         {
-            //int total = 5;
-
-            //for (int i = 0; i < total; i++)
-            //{
-            //    if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
-            //    {
-            //        particles.Add(GenerateNewParticle(position, velocity, camera));
-            //    }
-            //}
-            
-
             for (int particle = 0; particle < particles.Count; particle++)
             {
                 particles[particle].Update();

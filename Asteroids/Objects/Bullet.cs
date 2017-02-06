@@ -13,7 +13,7 @@ namespace Asteroids
         Vector3 Position;       // The current position of the particle        
         float Velocity;     // The speed of the particle at the current instance
         Vector3 Direction;
-        Matrix TransformMatrix;
+        //Matrix TransformMatrix;
         bool isActive = true;
         int TTL;
 
@@ -31,7 +31,7 @@ namespace Asteroids
             return Position;
         }
 
-        public bool getIsActive()
+        public bool IsActive()
         {
             return isActive;
         }

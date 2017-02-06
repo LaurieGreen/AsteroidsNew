@@ -135,18 +135,18 @@ namespace Asteroids
                     gameOverMenu.score = 0;
                 }                
                 gameOverMenu.Update(state, lastState);
-                if (gameOverMenu.finalSelection != "")
+                if (gameOverMenu.getFinalSelection() != "")
                 {
                     gameState = GameState.StartMenu;
                     
                     AddHighScore();
-                    gameOverMenu.finalSelection = "";
+                    gameOverMenu.setFinalSelection("");
                 }
             }
             else if (gameState == GameState.StartMenu)
             {
                 mainMenu.Update(state, lastState);
-                if (mainMenu.finalSelection == 0)
+                if (mainMenu.getFinalSelection() == 0)
                 {
                     if (GameConstants.Debug)
 #pragma warning disable CS0162 // Unreachable code detected
@@ -155,54 +155,54 @@ namespace Asteroids
 
                     gameState = GameState.Loading;
                     timeBeginLoad = (float)gameTime.TotalGameTime.TotalMilliseconds;
-                    mainMenu.finalSelection = -10;
-                    mainMenu.currentSelection = 0;
+                    mainMenu.setFinalSelection(-10);
+                    mainMenu.setCurrentSelection(0);
                 }
-                else if (mainMenu.finalSelection == 1)
+                else if (mainMenu.getFinalSelection() == 1)
                 {
                     gameState = GameState.HighScore;
-                    mainMenu.finalSelection = -10;
-                    mainMenu.currentSelection = 0;
+                    mainMenu.setFinalSelection(-10);
+                    mainMenu.setCurrentSelection(0);
                 }
-                else if (mainMenu.finalSelection == 2)
+                else if (mainMenu.getFinalSelection() == 2)
                 {
-                    mainMenu.finalSelection = -10;
+                    mainMenu.setFinalSelection(-10);
                     game.Quit();
                 }
-                else if (mainMenu.finalSelection == 3)
+                else if (mainMenu.getFinalSelection() == 3)
                 {
                     gameState = GameState.Debug;
-                    mainMenu.finalSelection = -10;
-                    mainMenu.currentSelection = 0;
+                    mainMenu.setFinalSelection(-10);
+                    mainMenu.setCurrentSelection(0);
                 }
             }
             else if (gameState == GameState.Paused)
             {
                 pauseMenu.Update(state, lastState);
-                if (pauseMenu.finalSelection == 0)
+                if (pauseMenu.getFinalSelection() == 0)
                 {
                     gameState = GameState.Playing;
                     //System.Console.WriteLine("playing");
-                    pauseMenu.finalSelection = -10;
-                    pauseMenu.currentSelection = 0;
+                    pauseMenu.setFinalSelection(-10);
+                    pauseMenu.setCurrentSelection(0);
                 }
-                if (pauseMenu.finalSelection == 1)
+                if (pauseMenu.getFinalSelection() == 1)
                 {
                     gameState = GameState.GameOver;
                     //System.Console.WriteLine("menu");
-                    pauseMenu.finalSelection = -10;
-                    pauseMenu.currentSelection = 0;
+                    pauseMenu.setFinalSelection(-10);
+                    pauseMenu.setCurrentSelection(0);
                 }
             }
             else if (gameState == GameState.HighScore)
             {
                 highScoreMenu.Update(state, lastState);
                 //System.Console.WriteLine("this is the highscore menu");
-                if (highScoreMenu.finalSelection == 0)
+                if (highScoreMenu.getFinalSelection() == 0)
                 {
                     gameState = GameState.StartMenu;
-                    highScoreMenu.finalSelection = -10;
-                    highScoreMenu.currentSelection = 0;
+                    highScoreMenu.setFinalSelection(-10);
+                    highScoreMenu.setCurrentSelection(0);
                 }
             }
             else if (gameState == GameState.Loading && !isLoading)
@@ -217,41 +217,41 @@ namespace Asteroids
             else if (GameConstants.Debug && gameState == GameState.Debug)
             {
                 debugMenu.Update(state, lastState);
-                if (debugMenu.finalSelection == 0)
+                if (debugMenu.getFinalSelection() == 0)
                 {
                     gameState = GameState.StartMenu;
-                    debugMenu.finalSelection = -10;
-                    debugMenu.currentSelection = 0;
+                    debugMenu.setFinalSelection(-10);
+                    debugMenu.setCurrentSelection(0);
                 }
-                else if (debugMenu.finalSelection == 1)
+                else if (debugMenu.getFinalSelection() == 1)
                 {
                     gameState = GameState.HighScore;
-                    debugMenu.finalSelection = -10;
-                    debugMenu.currentSelection = 0;
+                    debugMenu.setFinalSelection(-10);
+                    debugMenu.setCurrentSelection(0);
                 }
-                else if(debugMenu.finalSelection == 2)
+                else if(debugMenu.getFinalSelection() == 2)
                 {
                     gameState = GameState.Loading;
-                    debugMenu.finalSelection = -10;
-                    debugMenu.currentSelection = 0;
+                    debugMenu.setFinalSelection(-10);
+                    debugMenu.setCurrentSelection(0);
                 }
-                else if(debugMenu.finalSelection == 3)
+                else if(debugMenu.getFinalSelection() == 3)
                 {
                     gameState = GameState.Playing;
-                    debugMenu.finalSelection = -10;
-                    debugMenu.currentSelection = 0;
+                    debugMenu.setFinalSelection(-10);
+                    debugMenu.setCurrentSelection(0);
                 }
-                else if(debugMenu.finalSelection == 4)
+                else if(debugMenu.getFinalSelection() == 4)
                 {
                     gameState = GameState.Paused;
-                    debugMenu.finalSelection = -10;
-                    debugMenu.currentSelection = 0;
+                    debugMenu.setFinalSelection(-10);
+                    debugMenu.setCurrentSelection(0);
                 }
-                else if(debugMenu.finalSelection == 5)
+                else if(debugMenu.getFinalSelection() == 5)
                 {
                     gameState = GameState.GameOver;
-                    debugMenu.finalSelection = -10;
-                    debugMenu.currentSelection = 0;
+                    debugMenu.setFinalSelection(-10);
+                    debugMenu.setCurrentSelection(0);
                 }
             }
             //not updating this one for now because its so big
@@ -349,11 +349,11 @@ namespace Asteroids
         {
             try
             {
-                highscoresList.Add(gameOverMenu.finalSelection + ":" + level.getPlayer().getScore().ToString() + ",");
+                highscoresList.Add(gameOverMenu.getFinalSelection() + ":" + level.getPlayer().getScore().ToString() + ",");
             }
             catch(NullReferenceException)
             {
-                highscoresList.Add(gameOverMenu.finalSelection + ":" + 0
+                highscoresList.Add(gameOverMenu.getFinalSelection() + ":" + 0
                     + ",");
             }
             string highscore = String.Join(String.Empty, highscoresList);

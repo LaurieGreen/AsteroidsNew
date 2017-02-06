@@ -32,6 +32,25 @@ namespace Asteroids
             currentSelection = 0;
         }
 
+        public void setCurrentSelection(int i)
+        {
+            currentSelection = i;
+        }
+
+        public void setFinalSelection(int i)
+        {
+            finalSelection = i;
+        }
+        public int getFinalSelection()
+        {
+            return finalSelection;
+        }
+
+        public int getCurrentSelection()
+        {
+            return currentSelection;
+        }
+
         public void MoveSelectionUp()
         {
             if (currentSelection > 0)

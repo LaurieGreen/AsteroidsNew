@@ -14,7 +14,7 @@ namespace Asteroids
         ParticleEngine asteroidParticle;
         Random random;
         Matrix[] asteroidTransforms;
-        private int asteroids;
+        int asteroids;
 
         public AsteroidEngine(Model currentTexture, Camera camera, List<Model> particleModel, int level)
         {
@@ -30,6 +30,7 @@ namespace Asteroids
         {
             return asteroidList;
         }
+
 
         private Matrix[] SetupEffectDefaults(Model myModel, Camera camera)
         {
@@ -111,7 +112,7 @@ namespace Asteroids
                     for (int j = 0; j < total; j++)
                     {
                         Vector3 velocity = new Vector3(1f * (float)(random.NextDouble() * 2 - 1), 1f * (float)(random.NextDouble() * 2 - 1), 0);
-                        asteroidParticle.particles.Add(asteroidParticle.GenerateNewParticle(asteroidList[i].getPosition(), Vector3.Multiply(velocity, 0.1f), camera));
+                        asteroidParticle.getParticles().Add(asteroidParticle.GenerateNewParticle(asteroidList[i].getPosition(), Vector3.Multiply(velocity, 0.1f), camera));
                     }
                     asteroidList.RemoveAt(i); // removes old asteroid
                     i--;                    
