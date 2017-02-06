@@ -11,8 +11,8 @@ namespace Asteroids
     public class Asteroid
     {
         Model CurrentTexture;
-        Vector3 Position, Velocity, Rotation;
-        float Speed, RotationXamount, RotationYamount,RotationZamount;
+        Vector3 position, velocity, Rotation;
+        float speed, RotationXamount, RotationYamount,RotationZamount;
         Matrix TransformMatrix, RotationMatrix;
         bool isActive, isColliding;
         int life, mass;
@@ -22,10 +22,10 @@ namespace Asteroids
         public Asteroid(Model currentTexture, Vector3 position, float velocityx, float velocityy, float speed, int life, int mass, Random rand)
         {
             CurrentTexture = currentTexture;
-            Position = position;
-            Velocity.X = velocityx;
-            Velocity.Y = velocityy;
-            Speed = speed;
+            this.position = position;
+            velocity.X = velocityx;
+            velocity.Y = velocityy;
+            this.speed = speed;
             this.life = life;
             this.mass = mass;
             isActive = true;
@@ -41,7 +41,7 @@ namespace Asteroids
 
         }
 
-        public bool getIsActive()
+        public bool IsActive()
         {
             return isActive;
         }
@@ -56,10 +56,60 @@ namespace Asteroids
             life = i;
         }
 
+        public Vector3 getPosition()
+        {
+            return position;
+        }
+
+        public Vector3 getVelocity()
+        {
+            return velocity;
+        }
+
+        public void setVelocityX(float f)
+        {
+            velocity.X = f;
+        }
+
+        public void setVelocityY(float f)
+        {
+            velocity.Y = f;
+        }
+
+        public float getSpeed()
+        {
+            return speed;
+        }
+        
+        public void addLife(int i)
+        {
+            life += i;
+        }
+
+        public void setIsActive (bool b)
+        {
+            isActive = b;
+        }
+
+        public bool IsColliding()
+        {
+            return isColliding;
+        }
+
+        public int getMass()
+        {
+            return mass;
+        }
+
+        public Model getCurrentTexture()
+        {
+            return CurrentTexture;
+        }
+
         public void Update(float delta)
         {
             collideTimer -= delta;
-            Position += Velocity * Speed * GameConstants.AsteroidSpeedAdjustment * delta;
+            position += velocity * speed * GameConstants.AsteroidSpeedAdjustment * delta;
 
             Rotation.X += RotationXamount;
             Rotation.Y += RotationYamount;
@@ -68,14 +118,14 @@ namespace Asteroids
             RotationMatrix = Matrix.CreateRotationY(Rotation.Y);
             RotationMatrix = Matrix.CreateRotationZ(Rotation.Z);
 
-            if (Position.X > GameConstants.PlayfieldSizeX)
-                Position.X -= 2 * GameConstants.PlayfieldSizeX;
-            if (Position.X < -GameConstants.PlayfieldSizeX)
-                Position.X += 2 * GameConstants.PlayfieldSizeX;
-            if (Position.Y > GameConstants.PlayfieldSizeY)
-                Position.Y -= 2 * GameConstants.PlayfieldSizeY;
-            if (Position.Y < -GameConstants.PlayfieldSizeY)
-                Position.Y += 2 * GameConstants.PlayfieldSizeY;
+            if (position.X > GameConstants.PlayfieldSizeX)
+                position.X -= 2 * GameConstants.PlayfieldSizeX;
+            if (position.X < -GameConstants.PlayfieldSizeX)
+                position.X += 2 * GameConstants.PlayfieldSizeX;
+            if (position.Y > GameConstants.PlayfieldSizeY)
+                position.Y -= 2 * GameConstants.PlayfieldSizeY;
+            if (position.Y < -GameConstants.PlayfieldSizeY)
+                position.Y += 2 * GameConstants.PlayfieldSizeY;
             if (collideTimer <= 0.0f)
             {
                 isColliding = false;
@@ -85,7 +135,7 @@ namespace Asteroids
 
         public void Draw(Camera camera, Matrix[] asteroidTransforms)
         {
-            TransformMatrix = RotationMatrix * Matrix.CreateTranslation(Position);
+            TransformMatrix = RotationMatrix * Matrix.CreateTranslation(position);
             camera.DrawModel(CurrentTexture, TransformMatrix, asteroidTransforms, camera, new Vector3(255, 0, 0));
         }
     }

@@ -65,13 +65,14 @@ namespace Asteroids
 
         public void CheckCollisions(Model bulletModel, SoundEffect explosionSound)
         {
+            List<Asteroid> asteroids = asteroidEngine.getAsteroidList();
             //bullet VS asteroid collision check
-            for (int i = 0; i < asteroidEngine.asteroidList.Count(); i++)//for each asteroid
+            for (int i = 0; i < asteroidEngine.getAsteroidList().Count(); i++)//for each asteroid
             {
-                if (asteroidEngine.asteroidList[i].isActive)//check if asteroid is active
+                if (asteroidEngine.getAsteroidList()[i].IsActive())//check if asteroid is active
                 {
                     //give asteroid a bounding sphere
-                    BoundingSphere asteroidSphere = new BoundingSphere(asteroidEngine.asteroidList[i].Position, asteroidEngine.asteroidList[i].CurrentTexture.Meshes[0].BoundingSphere.Radius * GameConstants.AsteroidBoundingSphereScale);
+                    BoundingSphere asteroidSphere = new BoundingSphere(asteroidEngine.getAsteroidList()[i].getPosition(), asteroidEngine.getAsteroidList()[i].getCurrentTexture().Meshes[0].BoundingSphere.Radius * GameConstants.AsteroidBoundingSphereScale);
                     for (int j = 0; j < bulletEngine.getBullets().Count; j++)//for each bullet
                     {
                         if (bulletEngine.getBullets()[j].getIsActive())//check if bullet is active
@@ -81,7 +82,7 @@ namespace Asteroids
                             if (asteroidSphere.Intersects(bulletSphere))//if asteroid and bullet intercept
                             {
                                 explosionSound.Play(0.01f, 0, 0);
-                                asteroidEngine.asteroidList[i].isActive = false;
+                                asteroidEngine.getAsteroidList()[i].setIsActive(false);
                                 bulletEngine.getBullets()[j].setTTL(-1);
                                 player.setHasScored(true);
                             }
@@ -90,25 +91,25 @@ namespace Asteroids
                 }
             }
             //asteroid VS asteroid collision check
-            for (int i = 0; i < asteroidEngine.asteroidList.Count(); i++)//for each asteroid
+            for (int i = 0; i < asteroidEngine.getAsteroidList().Count(); i++)//for each asteroid
             {
-                if (asteroidEngine.asteroidList[i].isActive && !asteroidEngine.asteroidList[i].isColliding)//check if asteroid is active
+                if (asteroidEngine.getAsteroidList()[i].IsActive() && !asteroidEngine.getAsteroidList()[i].IsColliding())//check if asteroid is active
                 {
-                    for (int j = i + 1; j < asteroidEngine.asteroidList.Count(); j++)//for each asteroid, loop two
+                    for (int j = i + 1; j < asteroidEngine.getAsteroidList().Count(); j++)//for each asteroid, loop two
                     {
-                        if (asteroidEngine.asteroidList[j].isActive && !asteroidEngine.asteroidList[j].isColliding)//if active
+                        if (asteroidEngine.getAsteroidList()[j].IsActive() && !asteroidEngine.getAsteroidList()[j].IsColliding())//if active
                         {
-                            double xDist = asteroidEngine.asteroidList[i].Position.X - asteroidEngine.asteroidList[j].Position.X;
-                            double yDist = asteroidEngine.asteroidList[i].Position.Y - asteroidEngine.asteroidList[j].Position.Y;
+                            double xDist = asteroidEngine.getAsteroidList()[i].getPosition().X - asteroidEngine.getAsteroidList()[j].getPosition().X;
+                            double yDist = asteroidEngine.getAsteroidList()[i].getPosition().Y - asteroidEngine.getAsteroidList()[j].getPosition().Y;
                             double distSquared = xDist * xDist + yDist * yDist;
                             if (distSquared <= (
-                                asteroidEngine.asteroidList[i].CurrentTexture.Meshes[0].BoundingSphere.Radius +
-                                asteroidEngine.asteroidList[j].CurrentTexture.Meshes[0].BoundingSphere.Radius) * (
-                                asteroidEngine.asteroidList[i].CurrentTexture.Meshes[0].BoundingSphere.Radius +
-                                asteroidEngine.asteroidList[j].CurrentTexture.Meshes[0].BoundingSphere.Radius))
+                                asteroidEngine.getAsteroidList()[i].getCurrentTexture().Meshes[0].BoundingSphere.Radius +
+                                asteroidEngine.getAsteroidList()[j].getCurrentTexture().Meshes[0].BoundingSphere.Radius) * (
+                                asteroidEngine.getAsteroidList()[i].getCurrentTexture().Meshes[0].BoundingSphere.Radius +
+                                asteroidEngine.getAsteroidList()[j].getCurrentTexture().Meshes[0].BoundingSphere.Radius))
                             {
-                                double xVelocity = asteroidEngine.asteroidList[j].Velocity.X - asteroidEngine.asteroidList[i].Velocity.X;
-                                double yVelocity = asteroidEngine.asteroidList[j].Velocity.Y - asteroidEngine.asteroidList[i].Velocity.Y;
+                                double xVelocity = asteroidEngine.getAsteroidList()[j].getVelocity().X - asteroidEngine.getAsteroidList()[i].getVelocity().X;
+                                double yVelocity = asteroidEngine.getAsteroidList()[j].getVelocity().Y - asteroidEngine.getAsteroidList()[i].getVelocity().Y;
                                 double dotProduct = xDist * xVelocity + yDist * yVelocity;
                                 if (dotProduct > 0)
                                 {
@@ -117,13 +118,13 @@ namespace Asteroids
                                     double yCollision = yDist * collisionScale;
                                     //The Collision vector is the speed difference projected on the Dist vector,
                                     //thus it is the component of the speed difference needed for the collision.
-                                    double combinedMass = asteroidEngine.asteroidList[i].Mass + asteroidEngine.asteroidList[j].Mass;
-                                    double collisionWeightA = 2 * asteroidEngine.asteroidList[j].Mass / combinedMass;
-                                    double collisionWeightB = 2 * asteroidEngine.asteroidList[i].Mass / combinedMass;
-                                    asteroidEngine.asteroidList[i].Velocity.X += (float) (collisionWeightA * xCollision);
-                                    asteroidEngine.asteroidList[i].Velocity.Y += (float) (collisionWeightA * yCollision);
-                                    asteroidEngine.asteroidList[j].Velocity.X -= (float) (collisionWeightB * xCollision);
-                                    asteroidEngine.asteroidList[j].Velocity.Y -= (float) (collisionWeightB * yCollision);
+                                    double combinedMass = asteroidEngine.getAsteroidList()[i].getMass() + asteroidEngine.getAsteroidList()[j].getMass();
+                                    double collisionWeightA = 2 * asteroidEngine.getAsteroidList()[j].getMass() / combinedMass;
+                                    double collisionWeightB = 2 * asteroidEngine.getAsteroidList()[i].getMass() / combinedMass;
+                                    asteroidEngine.getAsteroidList()[i].setVelocityX(asteroidEngine.getAsteroidList()[i].getVelocity().X + (float)(collisionWeightA * xCollision));
+                                    asteroidEngine.getAsteroidList()[i].setVelocityY(asteroidEngine.getAsteroidList()[i].getVelocity().Y + (float) (collisionWeightA * yCollision));
+                                    asteroidEngine.getAsteroidList()[j].setVelocityX(asteroidEngine.getAsteroidList()[i].getVelocity().X - (float) (collisionWeightB * xCollision));
+                                    asteroidEngine.getAsteroidList()[j].setVelocityY(asteroidEngine.getAsteroidList()[i].getVelocity().X - (float) (collisionWeightB * yCollision));
                                 }
                             }
                         }
@@ -137,11 +138,11 @@ namespace Asteroids
                 if (!player.getIsSpawning())//only check collisions if the player isn't spawning
                 {
                     BoundingSphere shipSphere = new BoundingSphere(player.getPosition(), player.getCurrentTexture().Meshes[0].BoundingSphere.Radius * GameConstants.ShipBoundingSphereScale);
-                    for (int i = 0; i < asteroidEngine.asteroidList.Count(); i++)
+                    for (int i = 0; i < asteroidEngine.getAsteroidList().Count(); i++)
                     {
-                        if (asteroidEngine.asteroidList[i].isActive == true)
+                        if (asteroidEngine.getAsteroidList()[i].IsActive() == true)
                         {
-                            BoundingSphere b = new BoundingSphere(asteroidEngine.asteroidList[i].Position, asteroidEngine.asteroidList[i].CurrentTexture.Meshes[0].BoundingSphere.Radius * GameConstants.AsteroidBoundingSphereScale);
+                            BoundingSphere b = new BoundingSphere(asteroidEngine.getAsteroidList()[i].getPosition(), asteroidEngine.getAsteroidList()[i].getCurrentTexture().Meshes[0].BoundingSphere.Radius * GameConstants.AsteroidBoundingSphereScale);
                             if (b.Intersects(shipSphere))
                             {
                                 //blow up ship
@@ -158,7 +159,7 @@ namespace Asteroids
         public void Draw(Camera camera, float timeDelta, SpriteFont font, SpriteBatch spriteBatch, int level, float width, float height)
         {
             spriteBatch.Begin();
-            DrawUI(camera, level, player.getScore(), player.getLives(), asteroidEngine.asteroidList.Count(), player.getMultiplier(), font, spriteBatch, width, height);
+            DrawUI(camera, level, player.getScore(), player.getLives(), asteroidEngine.getAsteroidList().Count(), player.getMultiplier(), font, spriteBatch, width, height);
             spriteBatch.End();
             player.Draw(camera, timeDelta);
             asteroidEngine.Draw(camera);

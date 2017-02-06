@@ -10,8 +10,8 @@ namespace Asteroids
 {
     public class AsteroidEngine
     {
-        public List<Asteroid> asteroidList;
-        public ParticleEngine asteroidParticle;
+        List<Asteroid> asteroidList;
+        ParticleEngine asteroidParticle;
         Random random;
         Matrix[] asteroidTransforms;
         private int asteroids;
@@ -24,6 +24,11 @@ namespace Asteroids
             asteroids = asteroidList.Count();
             asteroidTransforms = SetupEffectDefaults(currentTexture, camera);
             random = new Random();
+        }
+
+        public List<Asteroid> getAsteroidList()
+        {
+            return asteroidList;
         }
 
         private Matrix[] SetupEffectDefaults(Model myModel, Camera camera)
@@ -78,35 +83,35 @@ namespace Asteroids
             for (int i = 0; i < asteroidList.Count(); i++)
             {
                 asteroidList[i].Update(timeDelta);
-                if (asteroidList[i].isActive == false)
+                if (asteroidList[i].IsActive() == false)
                 {
-                    asteroidList[i].Life--;
-                    if (asteroidList[i].Life > 0)
+                    asteroidList[i].addLife(-1);
+                    if (asteroidList[i].getLife() > 0)
                     {
                         //adds two more asteroids when one is destroyed
                         AddAsteroid(
-                            asteroidModel[asteroidList[i].Life - 1], //pass in smaller roid
-                            asteroidList[i].Position.X, //pass in x position of parent roid
-                            asteroidList[i].Position.Y, //pass in y position of parent roid
-                            -asteroidList[i].Velocity.Y, //pass in parent -y velocity for x vector 
-                            asteroidList[i].Velocity.X,  //pass in parent x velocity for y vector
-                            asteroidList[i].Speed, 
-                            asteroidList[i].Life, 10 * asteroidList[i].Life);// adds perpendicular vector (-y, x)
+                            asteroidModel[asteroidList[i].getLife() - 1], //pass in smaller roid
+                            asteroidList[i].getPosition().X, //pass in x position of parent roid
+                            asteroidList[i].getPosition().Y, //pass in y position of parent roid
+                            -asteroidList[i].getVelocity().Y, //pass in parent -y velocity for x vector 
+                            asteroidList[i].getVelocity().X,  //pass in parent x velocity for y vector
+                            asteroidList[i].getSpeed(), 
+                            asteroidList[i].getLife(), 10 * asteroidList[i].getLife());// adds perpendicular vector (-y, x)
 
                         AddAsteroid(
-                            asteroidModel[asteroidList[i].Life - 1], //pass in smaller model
-                            asteroidList[i].Position.X, //pass in x position of parent roid
-                            asteroidList[i].Position.Y, //pass in y position of parent roid
-                            asteroidList[i].Velocity.Y, //pass in parent y velocity for x vector
-                            -asteroidList[i].Velocity.X, //pass in parent -x velocity for y vector
-                            asteroidList[i].Speed, 
-                            asteroidList[i].Life, 10 * asteroidList[i].Life);// adds perpendicular vector (y, -x)
+                            asteroidModel[asteroidList[i].getLife() - 1], //pass in smaller model
+                            asteroidList[i].getPosition().X, //pass in x position of parent roid
+                            asteroidList[i].getPosition().Y, //pass in y position of parent roid
+                            asteroidList[i].getVelocity().Y, //pass in parent y velocity for x vector
+                            -asteroidList[i].getVelocity().X, //pass in parent -x velocity for y vector
+                            asteroidList[i].getSpeed(), 
+                            asteroidList[i].getLife(), 10 * asteroidList[i].getLife());// adds perpendicular vector (y, -x)
                     }
                     int total = 25;
                     for (int j = 0; j < total; j++)
                     {
                         Vector3 velocity = new Vector3(1f * (float)(random.NextDouble() * 2 - 1), 1f * (float)(random.NextDouble() * 2 - 1), 0);
-                        asteroidParticle.particles.Add(asteroidParticle.GenerateNewParticle(asteroidList[i].Position, Vector3.Multiply(velocity, 0.1f), camera));
+                        asteroidParticle.particles.Add(asteroidParticle.GenerateNewParticle(asteroidList[i].getPosition(), Vector3.Multiply(velocity, 0.1f), camera));
                     }
                     asteroidList.RemoveAt(i); // removes old asteroid
                     i--;                    
@@ -119,7 +124,7 @@ namespace Asteroids
         {
             for (int i = 0; i < asteroidList.Count(); i++)
             {
-                if (asteroidList[i].isActive == true)
+                if (asteroidList[i].IsActive() == true)
                 {
                     asteroidList[i].Draw(camera, asteroidTransforms);
                 }

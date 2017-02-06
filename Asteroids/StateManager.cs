@@ -112,7 +112,7 @@ namespace Asteroids
                     gameState = GameState.GameOver;
                     //playingTime = playingTime + ((float)gameTime.TotalGameTime.TotalSeconds - pausedTime);
                 }
-                else if (level.getAsteroidEngine().asteroidList.Count() < 1)
+                else if (level.getAsteroidEngine().getAsteroidList().Count() < 1)
                 {
                     currentLevel++;
                     LoadNewLevel(level.getPlayer().getLives(), level.getPlayer().getScore());
