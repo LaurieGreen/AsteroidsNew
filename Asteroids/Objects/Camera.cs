@@ -14,12 +14,12 @@ namespace Asteroids
         protected Vector3 topDown = new Vector3(0.0f, 0.0f, 14.0f);
         protected Vector3 chase = new Vector3(0.0f, 1500.0f, 200.0f);
 
-        public Vector3 Position;
-        public Vector3 Target;
+        Vector3 Position;
+        Vector3 Target;
 
-        public Matrix World;
-        public Matrix View;
-        public Matrix Projection;
+        Matrix World;
+        Matrix View;
+        Matrix Projection;
 
         float aspectRatio;
         float foView;
@@ -39,6 +39,26 @@ namespace Asteroids
             View = Matrix.CreateLookAt(Position, Target, Vector3.Up);
             //Projection = Matrix.CreatePerspectiveFieldOfView(foView, aspectRatio, near, far);
             Projection = Matrix.CreateOrthographic(40f, 22.5f, near, far);
+        }
+
+        public Matrix getProjection()
+        {
+            return Projection;
+        }
+
+        public Matrix getView()
+        {
+            return View;
+        }
+
+        public Vector3 getPosition()
+        {
+            return Position;
+        }
+
+        public Vector3 getTarget()
+        {
+            return Target;
         }
 
         public Matrix[] SetupEffectDefaults(Model model, Camera camera)

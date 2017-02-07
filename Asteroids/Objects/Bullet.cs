@@ -31,6 +31,11 @@ namespace Asteroids
             return Position;
         }
 
+        public Vector3 getDirection()
+        {
+            return Direction;
+        }
+
         public bool IsActive()
         {
             return isActive;
