@@ -85,6 +85,7 @@ namespace Asteroids
                                 asteroidEngine.getAsteroidList()[i].setIsActive(false);
                                 bulletEngine.getBullets()[j].setTTL(-1);
                                 player.setHasScored(true);
+                                asteroidEngine.setBulletVector(bulletEngine.getBullets()[i].getDirection());
                             }
                         }
                     }

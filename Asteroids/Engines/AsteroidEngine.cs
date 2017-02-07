@@ -14,6 +14,7 @@ namespace Asteroids
         ParticleEngine asteroidParticle;
         Random random;
         Matrix[] asteroidTransforms;
+        Vector3 bulletVector;
         int asteroids;
 
         public AsteroidEngine(Model currentTexture, Camera camera, List<Model> particleModel, int level)
@@ -31,6 +32,10 @@ namespace Asteroids
             return asteroidList;
         }
 
+        public void setBulletVector(Vector3 v)
+        {
+            bulletVector = v;
+        }
 
         private Matrix[] SetupEffectDefaults(Model myModel, Camera camera)
         {
@@ -88,14 +93,21 @@ namespace Asteroids
                 {
                     asteroidList[i].addLife(-1);
                     if (asteroidList[i].getLife() > 0)
-                    {
+                    {                       
+                        //(-Y, X)
+                        //(Y, -X)
                         //adds two more asteroids when one is destroyed
+                        Vector3 perpendicularVector1 = new Vector3(-asteroidList[i].getVelocity().Y, asteroidList[i].getVelocity().X, 0);//maybe we should add bullet vector?
+                        Vector3 perpendicularVector2 = new Vector3(asteroidList[i].getVelocity().Y, -asteroidList[i].getVelocity().X, 0);//maybe we should add bullet vector?
+                        Vector3 newVector1 = ((asteroidList[i].getVelocity()*2) + perpendicularVector1 + bulletVector)/4;
+                        Vector3 newVector2 = ((asteroidList[i].getVelocity()*2) + perpendicularVector2 + bulletVector)/4;
                         AddAsteroid(
                             asteroidModel[asteroidList[i].getLife() - 1], //pass in smaller roid
                             asteroidList[i].getPosition().X, //pass in x position of parent roid
                             asteroidList[i].getPosition().Y, //pass in y position of parent roid
-                            -asteroidList[i].getVelocity().Y, //pass in parent -y velocity for x vector 
-                            asteroidList[i].getVelocity().X,  //pass in parent x velocity for y vector
+
+                            newVector1.X,   
+                            newVector1.Y,  
                             asteroidList[i].getSpeed(), 
                             asteroidList[i].getLife(), 10 * asteroidList[i].getLife());// adds perpendicular vector (-y, x)
 
@@ -103,8 +115,8 @@ namespace Asteroids
                             asteroidModel[asteroidList[i].getLife() - 1], //pass in smaller model
                             asteroidList[i].getPosition().X, //pass in x position of parent roid
                             asteroidList[i].getPosition().Y, //pass in y position of parent roid
-                            asteroidList[i].getVelocity().Y, //pass in parent y velocity for x vector
-                            -asteroidList[i].getVelocity().X, //pass in parent -x velocity for y vector
+                            newVector2.X, 
+                            newVector2.Y, 
                             asteroidList[i].getSpeed(), 
                             asteroidList[i].getLife(), 10 * asteroidList[i].getLife());// adds perpendicular vector (y, -x)
                     }

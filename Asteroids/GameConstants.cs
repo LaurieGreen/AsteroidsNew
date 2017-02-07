@@ -7,8 +7,8 @@ namespace Asteroids
 {
     static class GameConstants
     {
-        public const float PlayfieldSizeX = 22.5f;
-        public const float PlayfieldSizeY = 12.5f;
+        public const float PlayfieldSizeX = 20.5f;
+        public const float PlayfieldSizeY = 11.5f;
 
         public const int NumAsteroids = 1;
         public const int NumLives = 5;
@@ -25,8 +25,7 @@ namespace Asteroids
         public const int NumBullets = 30;
         public const float BulletSpeedAdjustment = 7.0f;
 
-        public const bool Debug = false;
-            
+        public const bool Debug = false;            
 
     }
     
