@@ -113,8 +113,8 @@
     <Compile Include="Objects\Bullet.cs" />
     <Compile Include="Objects\Camera.cs" />
     <Compile Include="Engines\BulletEngine.cs" />
-    <Compile Include="Objects\GameOverScreen.cs" />
-    <Compile Include="Objects\HighScoreMenu.cs" />
+    <Compile Include="Menus\GameOverScreen.cs" />
+    <Compile Include="Menus\HighScoreMenu.cs" />
     <Compile Include="Objects\Level.cs" />
     <Compile Include="GameConstants.cs" />
     <Compile Include="Objects\Particle.cs" />
@@ -124,7 +124,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Objects\BasicMenu.cs" />
+    <Compile Include="Menus\BasicMenu.cs" />
     <Compile Include="StateManager.cs" />
   </ItemGroup>
   <ItemGroup>
